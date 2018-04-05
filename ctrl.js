@@ -1,6 +1,6 @@
 app.controller("ctrl", function($scope) {
 
-    function Message(txt){
+    function Message(message){
 
         this.createdBy=message.createdBy;
         this.createdAt=message.createdAt;
@@ -11,6 +11,22 @@ app.controller("ctrl", function($scope) {
 
     }
 
-    
+$scope.messages=[];
+
+
+
+$scope.msgSubmit=function(message){
+
+    message.createdAt=new Date();
+
+    message.createdBy="TBD";
+
+    var x=new Message(message);
+
+    $scope.messages.push(x);
+
+    console.log($scope.messages);  
+
+}
    
 });
