@@ -71,14 +71,53 @@ function newMessage(message){
 }
 
 
+//deleting a message 
+
+function deleteMessage(id){
+
+       messages.splice(id,1); 
+}
+
+
+
+
+//message update 
+
+function updateMessage(message){
+
+    
+    //sending the updated message to the constructor. 
+
+    message.createdAt=new Date();
+
+    message.createdBy="TBD";
+
+    var x=new Message(message);
+
+    //deleting the old message from the array by location(id)
+    //pushing the updated message in the same place
+
+    var id=messages.indexOf(message);
+
+    messages.splice(id,1,x);
+
+    
+
+    
+
+   
+}
+
+
 
 
 return {
 
     messages: messages,
     getData: getData,
-    newMessage: newMessage
-
+    newMessage: newMessage,
+    deleteMessage: deleteMessage,
+    updateMessage: updateMessage
 
 };
 
