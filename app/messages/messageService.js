@@ -83,28 +83,15 @@ function deleteMessage(id){
 
 //message update 
 
-function updateMessage(message){
+function updateMessage(message,id){
 
+    messages[id].createdBy=message.createdBy;
+    messages[id].createdAt=new Date();
+    messages[id].title=message.title;
+    messages[id].details=message.details;
+    messages[id].priority=message.priority;
     
-    //sending the updated message to the constructor. 
-
-    message.createdAt=new Date();
-
-    message.createdBy="TBD";
-
-    var x=new Message(message);
-
-    //deleting the old message from the array by location(id)
-    //pushing the updated message in the same place
-
-    var id=messages.indexOf(message);
-
-    messages.splice(id,1,x);
-
-    
-
-    
-
+ console.log(messages)  
    
 }
 

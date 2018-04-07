@@ -28,8 +28,9 @@ $scope.delete=function(message){
 
 $scope.update=function(message){
 
-    messageService.updateMessage(message);
-
+    var id=$scope.messages.indexOf(message);
+    messageService.updateMessage(message,id);
+    
 }
    
 });
