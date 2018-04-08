@@ -32,5 +32,8 @@ $scope.update=function(message){
     messageService.updateMessage(message,id);
     
 }
+
+
+
    
 });

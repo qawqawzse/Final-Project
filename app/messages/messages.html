@@ -1,94 +1,78 @@
 
 
-<!--New message modal dialog -->
-
-<!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    New Message
-  </button>
-  
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">New Message</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          
-            <form class="message container bg-light">
-                
-                  <div class="form-group">
-                          <label for="messageTitle">Message Title</label>
-                          <input type="text" class="form-control" id="messageTitle" ng-model="message.title">
-                  </div>
-      
-                  <div class="form-group">
-                          <label for="messageDetails">Message Details</label>
-                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
-                  </div>
-                  
-                  <div class="form-group">
-                          <label for="sel1">Priority:</label>
-                          <select class="form-control" id="sel1" ng-model="message.priority">
-                            <option>Low</option>
-                            <option>Medium</option>
-                            <option>High</option>
-                            <option>Critical</option>
-                          </select>
-                  </div> 
-      
-                  <div>
-                          <time>Created At: X</time>
-                  </div>
-      
-                  <div>
-                          <time>Created By: Current user(x)</time>
-                  </div>
-                  
-                  
-      
-                        
-              </form>
-
-
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="msgSubmit(message)">Submit</button>
-        </div>
-  
-      </div>
-    </div>
-  </div>  
-
-
-
     
 
-    
 
-    <!-- Message Display -->
 <div class="container mt-5 bg-light">
 <h1> Messages</h1>
 
+ <!--Top messages bar- search, filters, and new message button  -->
+
+    <div class="bg-secondary row">
+
+      <!-- new message button -->
+        
+          <button type="button" class="btn btn-primary col-sm-2" data-toggle="modal" data-target="#NewMessageModal">
+              New Message
+          </button>
+        
+      <!-- search bar  -->
+          <div class="col-sm-6 search-container">
+              <form>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+          </div>
+        
+          <!-- filter by priority -->
+          <div class="form-inline col-sm-2">
+              <label for="sel1">Priority:</label>
+              <select class="form-control" id="sel1" ng-model="message.priority">
+                <option>Low</option>  
+                <option>Medium</option>
+                <option>High</option>
+                <option>Critical</option>
+              </select>
+           
+          </div> 
+
+        <!-- sort by  -->
+
+        <div class="dropdown col-sm-2">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Sort Messages
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Date</a>
+              <a class="dropdown-item" href="#">Priority</a>
+            </div>
+        </div> 
+          
+    </div>    
+
+
+    
+<!-- messages Display Area -->
     <div id="accordion">
 
       <div class="card" ng-repeat="message in messages">
         <div class="card-header" id="headingOne">
           
           <h5 class="mb-0">
+
             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               {{message.title}}
             </button>
+            <!-- delete and update buttons  -->
+            <div class="float-right">
+            <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+              Update
+            </button>
+            </div>
+
           </h5>
+          
           <div>Priority:
             {{message.priority}}
           </div>
@@ -105,12 +89,153 @@
             {{message.details}}
           </div>
         </div>
-
-        <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
-        <button type="btn" class="btn btn-primary" ng-click="update(message)">Update</button>
+        
+        
       </div>
       
     </div>
 
 
   </div>
+
+
+
+
+  <!-- modal screens  -->
+
+  <!--New message modal dialog -->
+
+
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="NewMessageModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">New Message</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+            
+              <form class="message container bg-light">
+                  
+                    <div class="form-group">
+                            <label for="messageTitle">Message Title</label>
+                            <input type="text" class="form-control" id="messageTitle" ng-model="message.title">
+                    </div>
+        
+                    <div class="form-group">
+                            <label for="messageDetails">Message Details</label>
+                            <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                            <label for="sel1">Priority:</label>
+                            <select class="form-control" id="sel1" ng-model="message.priority">
+                              <option>Low</option>
+                              <option>Medium</option>
+                              <option>High</option>
+                              <option>Critical</option>
+                            </select>
+                    </div> 
+        
+                    <div>
+                            <time>Created At: X</time>
+                    </div>
+        
+                    <div>
+                            <time>Created By: Current user(x)</time>
+                    </div>
+                    
+                    
+        
+                          
+                </form>
+  
+  
+          </div>
+
+              
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="msgSubmit(message)">Submit</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>  
+
+
+
+
+  
+  
+  <!-- update message dialog  -->
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="updateModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Update Message</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+            
+              <form class="message container bg-light">
+                  
+                    <div class="form-group">
+                            <label for="messageTitle">Message Title</label>
+                            <input type="text" class="form-control" id="messageTitle" ng-model="message.title">
+                    </div>
+        
+                    <div class="form-group">
+                            <label for="messageDetails">Message Details</label>
+                            <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                            <label for="sel1">Priority:</label>
+                            <select class="form-control" id="sel1" ng-model="message.priority">
+                              <option>Low</option>
+                              <option>Medium</option>
+                              <option>High</option>
+                              <option>Critical</option>
+                            </select>
+                    </div> 
+        
+                    <div>
+                            <time>Created At: X</time>
+                    </div>
+        
+                    <div>
+                            <time>Created By: Current user(x)</time>
+                    </div>
+                    
+                    
+        
+                          
+                </form>
+  
+  
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="update(message)">Update</button>
+          </div>
+    
+        </div>
+      </div>
+    </div>  
