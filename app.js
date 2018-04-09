@@ -6,8 +6,15 @@ app.config(function($routeProvider) {
     .when("/", {
         templateUrl : "app/login/login.html",
         controller : "loginCtrl"
-     
+    
+    })
+    
+    .when("/messages", {
+        templateUrl : "app/messages/messages.html",
+        controller : "messagesCtrl"    
         
-        
+    
+    
+    
     });
 });

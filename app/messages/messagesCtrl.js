@@ -26,6 +26,9 @@ $scope.delete=function(message){
     console.log(id)
 }
 
+
+//update function not working 
+
 $scope.update=function(message){
 
     var id=$scope.messages.indexOf(message);

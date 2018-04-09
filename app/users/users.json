@@ -1,0 +1,39 @@
+[
+    {
+        "id": "1",
+        "role": "tenant",
+        "email": "dan@gmail.com",
+        "password": "dan123",
+        "fname": "Dan",
+        "lname": "Shalom",
+        "building": "1",
+        "appartment": "12",
+        "img":"assets/manTenant.png",
+        "data": ""
+    },
+    {
+        "id" : "2",
+        "role": "tenant",
+        "email": "griphin@gmail.com",
+        "password": "griphin123",
+        "fname": "Griphin",
+        "lname": "Doers",
+        "building": "1",
+        "appartment": "15",
+        "img" : "assets/womanTenant.png ",
+        "data": ""
+    },
+
+    {
+        "id" : "3",
+        "role": "owner",
+        "email": "ifat@gmail.com",
+        "password": "ifat123",
+        "fname": "Ifat",
+        "lname": "Zandberg",
+        "building": "1",
+        "appartment": "5",
+        "img" : "assets/womanOwner.png ",
+        "data": ""
+    }
+]
