@@ -1,7 +1,52 @@
 
 
-<div class="container">
+<div class="container mt-5">
 
     <button type="btn" class="btn btn-primary">New Tenant</button>
 
 </div>
+
+<!-- users display area  -->
+
+<div id="accordion" class="container mt-5">
+    
+          <div class="card" ng-repeat="user in users">
+            <div class="card-header" id="headingOne">
+              
+                <!-- accordion title -->
+              <h5 class="mb-0">
+    
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  {{user.fname}} {{user.lname}}
+                </button>
+                <!-- delete and update buttons  -->
+                <div class="float-right">
+                <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+                  Update
+                </button>
+                </div>
+    
+              </h5>
+              
+              <!--accordion body-->
+              
+            </div>
+        
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body row">
+
+                <div><img class="img-fluid" src="{{user.img}}"></div>
+
+
+              </div>
+            </div>
+            
+            
+          </div>
+          
+        </div>
+    
+    
+      </div>
+    
