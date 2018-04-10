@@ -1,5 +1,6 @@
 app.factory('messageService', function($http, $q ) {
 
+    var wasEverLoaded = false;
     var messages=[];
    
     function Message(message){
@@ -20,30 +21,39 @@ function getData() {
     
     var async = $q.defer();
 
-    $http.get('app/messages/messages.json').then(function(response) {
-
-      for(i=0; i<response.data.length; i++){
-      
-        var message = response.data[i];
-
-        var x=new Message(message);
-      
-        messages.push(x); 
-
-        console.log(message);
-
-      }
-
-      async.resolve();
-
-
-    }, function(response) {
-
-
-      async.reject();
-
-    });
+    if (wasEverLoaded) {
+        // Immediatly resolving the promise since cars is already available
+        async.resolve();
     
+    }else{    
+
+        $http.get('app/messages/messages.json').then(function(response) {
+
+            for(i=0; i<response.data.length; i++){
+        
+                var message = response.data[i];
+
+                var x=new Message(message);
+            
+                messages.push(x); 
+
+                console.log(message);
+
+            }
+
+            wasEverLoaded = true;
+            async.resolve();
+
+      
+
+
+        }, function(response) {
+
+
+        async.reject();
+
+        });
+    }
 
     return async.promise;
     console.log(messages);

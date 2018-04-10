@@ -1,5 +1,7 @@
 app.factory("userService", function ($http, $log, $q) {
     
+    var activeUser = null;
+    var wasEverLoaded = false;
     var users=[];
     
     function User(user) {
@@ -24,31 +26,38 @@ app.factory("userService", function ($http, $log, $q) {
     function getUsers() {
     
         var async = $q.defer();
+
+        if (wasEverLoaded) {
+           
+            async.resolve();
+
+        } else {
         
             $http.get('app/users/users.json').then(function(response) {
         
-              for(i=0; i<response.data.length; i++){
+                for(i=0; i<response.data.length; i++){
               
-                var user = response.data[i];
+                    var user = response.data[i];
+            
+                    var x=new User(user);
+                
+                    users.push(x); 
+            
+                    console.log(user);
         
-                var x=new User(user);
-              
-                messages.push(x); 
+                }
         
-                console.log(user);
-        
-              }
-        
-        async.resolve();
+                wasEverLoaded = true;
+                async.resolve();
         
         
             }, function(response) {
-        
-        
-              async.reject();
-        
-            });
             
+            
+                async.reject();
+            
+            });
+        }    
         
         return async.promise;
         console.log(users);
@@ -74,24 +83,43 @@ app.factory("userService", function ($http, $log, $q) {
     }
 
     
+    function loginCheck(email, pwd) {
+        var async = $q.defer();
 
+        $http.get('app/users/users.json').then(
+            function (response) {
+                for (var i = 0; i < response.data.length; i++) {
+                    if (response.data[i].email === email && response.data[i].password === pwd) {
+                        activeUser = response.data[i];
+                        async.resolve(true);
+                    }                
+                }
+                async.resolve(false);
+            }, function (response) {
+                $log.error("error in getting user json: " + JSON.stringify(response));
+                async.reject();
+        });
 
-    function loginCheck(email,pwd) {
-        
-        for(i=0; i<users.length; i++){
-            
-            if (email===user.email && pwd===user.password){
-
-                return user.id;
-
-            }else{
-
-                return nomatch;
-            }
-
-        }
-        
+        return async.promise;
     }
+
+
+    // function loginCheck(email,pwd) {
+        
+    //     for(i=0; i<users.length; i++){
+            
+    //         if (email===user.email && pwd===user.password){
+
+    //             return user.id;
+
+    //         }else{
+
+    //             return "nomatch";
+    //         }
+
+    //     }
+        
+    // }
 
 
 

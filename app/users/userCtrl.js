@@ -1,3 +1,4 @@
+
 app.controller("userCtrl", function($scope, userService, $http, $location ) {
 
     $scope.users=[];

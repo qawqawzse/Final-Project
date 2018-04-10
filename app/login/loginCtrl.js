@@ -1,22 +1,26 @@
 app.controller("loginCtrl", function($scope,userService, $http, $location ) {
 
-$scope.checkUser=function(email,pwd){
+var invalidCredentails=false;
 
-    var x= userService.checkUser(email,pwd);
 
-    if (x==nomatch){
+// calling user service to check if there is a match between pwd and email to one of the users
 
-        warningFlag=true;
-
-    }else{
-
-        warningFlag=false;
-
-        $location.path("/messages");
-    }
-
+$scope.checkUser= function(email,pwd) {    
+    
+    userService.loginCheck(email,pwd).then(function(successLogin) {
+        if (successLogin) {
+            $location.path("/messages");
+        } else {
+            
+            $scope.invalidCredentails = true;
+        }
+    })
+                    
 }
-
+  
 
 
 });    
+
+
+
