@@ -72,8 +72,10 @@ app.factory("userService", function ($http, $log, $q) {
 
         console.log(user)
 
-        user.id=user.id+1;
-        
+        user.id=users.length+1;
+
+        user.role="tenant";
+     
         var x=new User(user);
 
         users.push(x);
