@@ -1,10 +1,21 @@
 
-
+<!-- new tenant button -->
 <div class="container mt-5">
 
-    <button type="btn" class="btn btn-primary">New Tenant</button>
+    <button type="btn" class="btn btn-primary" ng-click="newTenant()">New Tenant</button>
 
 </div>
+
+<!-- searchfield -->
+<div class="container col-12"> 
+    
+<form>
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+
+
 
 <!-- users display area  -->
 
@@ -16,27 +27,33 @@
                 <!-- accordion title -->
               <h5 class="mb-0">
     
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="true" aria-controls="collapseOne">
                   {{user.fname}} {{user.lname}}
                 </button>
-                <!-- delete and update buttons  -->
-                <div class="float-right">
-                <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
-                  Update
-                </button>
-                </div>
-    
+                    
               </h5>
               
               <!--accordion body-->
               
             </div>
         
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="{{$index}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body row">
-
-                <div><img class="img-fluid" src="{{user.img}}"></div>
+                <!-- tenant image -->
+                <div class="col-sm-2">
+                  <img class=" img-fluid img-thumbnail float-left " src="{{user.img}}">
+                </div>
+                <div class="col-sm-4">
+                  <h5 class="text-primary">{{user.fname}} {{user.lname}}</h5>
+                  <a href="#">eMail: {{user.email}}</a>
+                  <p>Building: {{user.building}} Appartment: {{user.appartment}}</p>
+                  <p>Appartment: {{user.appartment}}</p>
+                </div>
+                <!-- delete and update buttons  -->
+                <div class="col-sm-2 float-right">
+                  <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">Update</button>
+                </div>
 
 
               </div>
@@ -50,3 +67,7 @@
     
       </div>
     
+
+<!--New Tenant Modal-->
+
+
