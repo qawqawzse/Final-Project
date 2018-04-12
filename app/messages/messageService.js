@@ -14,6 +14,12 @@ app.factory('messageService', function($http, $q ) {
 
     }
 
+    function Comment(comment){
+        this.createdBy=comment.createdBy;
+        this.createdAt=comment.createdAt;
+        this.text=comment.text;     
+    }
+
 
 //getting json file and constructing the objects into the array 
 
@@ -106,6 +112,12 @@ function updateMessage(message,id){
 }
 
 
+function newComment(index,messageInput){
+
+    messageInput.user=user;
+    messageInput.text=messageInput;
+    messages[index].comments.push(messageInput);
+}
 
 
 return {
@@ -114,7 +126,8 @@ return {
     getData: getData,
     newMessage: newMessage,
     deleteMessage: deleteMessage,
-    updateMessage: updateMessage
+    updateMessage: updateMessage,
+    newComment: newComment
 
 };
 

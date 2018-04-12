@@ -128,22 +128,11 @@ app.factory("userService", function ($http, $log, $q) {
     }
 
 
-    // function loginCheck(email,pwd) {
-        
-    //     for(i=0; i<users.length; i++){
-            
-    //         if (email===user.email && pwd===user.password){
+    function loggedIn(){
 
-    //             return user.id;
+        return activeUser;
 
-    //         }else{
-
-    //             return "nomatch";
-    //         }
-
-    //     }
-        
-    // }
+    }
 
 
 
@@ -154,6 +143,7 @@ return{
     newTenant:newTenant,
     newOwner:newOwner, 
     loginCheck:loginCheck,
+    loggedIn:loggedIn
 
 }
 
