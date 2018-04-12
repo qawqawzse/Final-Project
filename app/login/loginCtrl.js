@@ -18,9 +18,18 @@ $scope.checkUser= function(email,pwd) {
                     
 }
 
+// Ghost photo for homeowners in registration form
 $scope.user = {};
 
 $scope.user.img="assets/manOwner.png"
+
+// creating new homeowner and community (new user)
+
+$scope.newOwner=function(user){
+
+    userService.newOwner(user);
+
+}
   
 
 

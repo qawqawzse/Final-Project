@@ -13,6 +13,13 @@ app.config(function($routeProvider) {
         templateUrl : "app/messages/messages.html",
         controller : "messagesCtrl"    
         
+    })
+
+    .when("/users", {
+
+        templateUrl: "app/users/users.html",
+        controller: "userCtrl"
+
     
     
     

@@ -66,11 +66,31 @@ app.factory("userService", function ($http, $log, $q) {
         
     }
 
+    //new owner creation
 
+    function newOwner(user){
+        
+        console.log(user)
+        
+        user.id=users.length+1;
+        
+        user.role="owner";
+             
+        var x=new User(user);
+        
+        users.push(x);
+        
+        console.log(users);  
+        
+    }
    
-//new message creation from UI 
 
-    function newUser(user){
+
+
+
+    //new Tenant creation  
+
+    function newTenant(user){
 
         console.log(user)
 
@@ -82,7 +102,7 @@ app.factory("userService", function ($http, $log, $q) {
 
         users.push(x);
 
-        console.log(messages);  
+        console.log(users);  
 
     }
 
@@ -131,7 +151,8 @@ return{
 
     users: users,
     getUsers:getUsers,
-    newUser:newUser,
+    newTenant:newTenant,
+    newOwner:newOwner, 
     loginCheck:loginCheck,
 
 }

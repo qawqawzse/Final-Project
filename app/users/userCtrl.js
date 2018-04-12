@@ -7,8 +7,9 @@ app.controller("userCtrl", function($scope, userService, $http, $location ) {
         $scope.users = userService.users;
     });
 
-  
-    $scope.user.img="assets/manOwner.png"
+    
+    $scope.user={};
+    $scope.user.img="assets/manOwner.png";
 
 
 
@@ -16,7 +17,7 @@ app.controller("userCtrl", function($scope, userService, $http, $location ) {
 
 $scope.newTenant=function(user){
 
-    userService.newUser(user);
+    userService.newTenant(user);
     
 }
 
