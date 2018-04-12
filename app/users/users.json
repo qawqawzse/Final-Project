@@ -35,5 +35,18 @@
         "appartment": "5",
         "img" : "assets/womanOwner.png ",
         "data": ""
+    },
+
+    {
+        "id" : "4",
+        "role": "owner",
+        "email": "yoni@gmail.com",
+        "password": "yoni123",
+        "fname": "yoni",
+        "lname": "Aharonovich",
+        "building": "1",
+        "appartment": "13",
+        "img" : "assets/manOwner.png ",
+        "data": ""
     }
 ]

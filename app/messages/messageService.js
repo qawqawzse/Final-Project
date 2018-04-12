@@ -16,7 +16,7 @@ app.factory('messageService', function($http, $q ) {
 
     function Comment(comment){
         this.createdBy=comment.createdBy;
-        this.createdAt=new Date();
+        this.createdAt=comment.createdAt;
         this.text=comment.text;     
     }
 
@@ -111,10 +111,11 @@ function updateMessage(message,id){
    
 }
 
-
+//constructing new user comment retrieved from UI.
 function newComment(user,index,text){
     var comment={};
     comment.createdBy=user;
+    comment.createdAt=new Date();
     comment.text=text;    
     messages[index].comments.push(comment);
     console.log(comment);
