@@ -17,6 +17,10 @@ $scope.checkUser= function(email,pwd) {
     })
                     
 }
+
+$scope.user = {};
+
+$scope.user.img="assets/manOwner.png"
   
 
 

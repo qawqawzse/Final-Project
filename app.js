@@ -4,8 +4,8 @@ var app=angular.module("myApp",["ngRoute"]);
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl : "app/users/users.html",
-        controller : "userCtrl"
+        templateUrl : "app/login/login.html",
+        controller : "loginCtrl"
     
     })
     

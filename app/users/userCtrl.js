@@ -8,7 +8,7 @@ app.controller("userCtrl", function($scope, userService, $http, $location ) {
     });
 
   
-    
+    $scope.user.img="assets/manOwner.png"
 
 
 

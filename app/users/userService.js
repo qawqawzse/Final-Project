@@ -14,6 +14,8 @@ app.factory("userService", function ($http, $log, $q) {
         this.building = user.building;
         this.appartment = user.appartment;
         this.img = user.img;
+        this.communityName=user.communityName;
+        this.address=user.address;
         this.data = user.data;
     }
 

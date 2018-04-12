@@ -19,3 +19,103 @@
 
 </form> 
 
+
+
+
+
+
+
+<!-- signup button for homeowners  -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUp">
+Home Owners SignUP
+</button>
+
+<!-- homeowners signup dialog -->
+
+<!-- The Modal -->
+<div class="modal fade" id="signUp">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Home Owner SignUp</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        
+          <form class="message container bg-light">
+           
+            <!-- photo preview-->
+            <div class="col-sm-6">
+              <div class="col-sm-6">
+                <img ng-src="{{user.img}}" class="img-fluid" >
+              </div>
+            <div>
+                  
+            <!-- Upload Photo: <input type="file" name="img class="fas fa-camera"><input type="submit"> -->
+              <div class="col-sm-6 custom-file" id="imgUpload" >
+                  <input type="file" value="Browse" fileread="user.img" name="img" >                    
+              </div>
+                  
+                  
+              </div>
+              
+            </div>
+
+            <!-- inputs  -->
+            <div class="col-sm-6 float-right">
+            
+                <div class="col-sm-6 form-group">
+                  <label for="appartment">Community Name</label>
+                  <input type="number" class="form-control" id="appartment" ng-model="user.communityName">
+                </div>   
+
+                <div class="row"> 
+                  <div class="col-sm-6 form-group">
+                      <label for="building">Building</label>
+                      <input type="number" class="form-control" id="building" ng-model="user.building">
+                </div> 
+              
+                <div class="form-group">
+                        <label for="fname">First name</label>
+                        <input type="text" class="form-control" id="fname" ng-model="user.fname">
+                </div>
+                
+                <div class="form-group">
+                    <label for="fname">Last name</label>
+                    <input type="text" class="form-control" id="fname" ng-model="user.lname">
+                </div>             
+                
+                <div class="form-group">
+                    <label for="email">eMail</label>
+                    <input type="email" class="form-control" id="email" ng-model="user.email">
+                </div> 
+                
+                
+                  
+                </div>      
+
+          </div>    
+                
+                
+                
+    
+                      
+          </form>
+
+
+      </div>
+
+          
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="newOwner(user)">Create</button>
+      </div>
+
+    </div>
+  </div>
+</div>  
