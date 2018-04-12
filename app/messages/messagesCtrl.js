@@ -74,11 +74,10 @@ $scope.update=function(message){
 
 //saving comment input into the message object
 
-$scope.comment=function(index, messageInput){
+$scope.comment=function(index, text){
 
-    messageService.newComment($scope.activeUser,messageIndex, comment);
+    messageService.newComment($scope.activeUser.fname+" "+$scope.activeUser.lname , index, text);
 
-    console.log($scope.messages[index]);
     
 }
 

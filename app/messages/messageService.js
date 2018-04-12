@@ -16,7 +16,7 @@ app.factory('messageService', function($http, $q ) {
 
     function Comment(comment){
         this.createdBy=comment.createdBy;
-        this.createdAt=comment.createdAt;
+        this.createdAt=new Date();
         this.text=comment.text;     
     }
 
@@ -112,9 +112,12 @@ function updateMessage(message,id){
 }
 
 
-function newComment(index,comment){
-
+function newComment(user,index,text){
+    var comment={};
+    comment.createdBy=user;
+    comment.text=text;    
     messages[index].comments.push(comment);
+    console.log(comment);
 }
 
 

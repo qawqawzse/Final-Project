@@ -95,15 +95,20 @@
           <div class="card-body row">
             <!-- message text (details) -->
             <div class="col-sm-6">
+                <h6>Message Details</h6>
                 <p>{{message.details}}</p>
                 <p>Priority:{{message.priority}}</p>
             </div>
             <!-- message comments section -->
             <div class="col-sm-6 ">
                 <h6>Comments</h6>
-                <div>photo</div>
-                <div ng-repeat="comment in message.comments">{{message.comment}}</div>
-                <input type="text" ng-model="commentInput"><button type="btn" class="btn btn primary" ng-click="comment($index,comment)">Comment</button>
+                <div >
+                    <div class="border" ng-repeat="comment in message.comments">                    
+                      <h6>{{comment.createdBy}} <time>{{message.createdAt}}</time></h6>                  
+                      <p>{{comment.text}}</p>
+                    </div>
+                </div>
+                <input type="text" ng-model="text"><button type="btn" class="btn btn primary" ng-click="comment($index,text)">Comment</button>
             </div>
             
           </div>
