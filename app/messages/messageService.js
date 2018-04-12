@@ -112,11 +112,9 @@ function updateMessage(message,id){
 }
 
 
-function newComment(index,messageInput){
+function newComment(index,comment){
 
-    messageInput.user=user;
-    messageInput.text=messageInput;
-    messages[index].comments.push(messageInput);
+    messages[index].comments.push(comment);
 }
 
 

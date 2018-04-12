@@ -76,7 +76,7 @@ $scope.update=function(message){
 
 $scope.comment=function(index, messageInput){
 
-    messageService.newComment($scope.activeUser,index, messageInput);
+    messageService.newComment($scope.activeUser,messageIndex, comment);
 
     console.log($scope.messages[index]);
     
