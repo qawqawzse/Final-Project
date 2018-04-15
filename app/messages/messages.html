@@ -2,58 +2,62 @@
 
     
 
+<main class="container">
 
-<div class="container mt-5 bg-light">
+<!--Top messages bar- search, filters, and new message button  -->
 
- <!--Top messages bar- search, filters, and new message button  -->
-
-    <div class="bg-secondary row">
-
-      <!-- new message button -->
-        
-          <button type="button" class="btn btn-primary col-sm-2" data-toggle="modal" data-target="#NewMessageModal">
-              New Message
-          </button>
-        
-      <!-- search bar  -->
-          <div class="col-sm-6 ">
-              <input class="col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">              
-          </div>
-        
-          <!-- filter by priority -->
-          <div class="dropdown col-sm-2" ng-model="message.priority">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              filter
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Low</a>
-              <a class="dropdown-item" href="#">Meduim</a>
-              <a class="dropdown-item" href="#">High</a>
-              <a class="dropdown-item" href="#">Critical</a>
-            </div>
-        </div> 
-
-        <!-- sort by  -->
-
-        <div class="dropdown col-sm-2">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              Sort By
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Date</a>
-              <a class="dropdown-item" href="#">Priority</a>
-            </div>
-        </div> 
-          
-    </div>    
-
-
-
-
-
+<div class="container mt-3 bg-light  ">
+    
+          <!-- new message button -->
+          <div class="row">
+  
+              <button type="button" class="btn btn-primary col-sm-2 m-0 p-0 " data-toggle="modal" data-target="#NewMessageModal">
+                  New Message
+              </button>
+            
+          <!-- search bar  -->
+              <div class="col-sm-8 m-0 p-1">
+                  <input class=" col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">              
+              </div>
+            
+              <!-- filter by priority -->
+              <div class="dropdown col-sm-1 m-0 p-0" ng-model="message.priority">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  filter
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Low</a>
+                  <a class="dropdown-item" href="#">Meduim</a>
+                  <a class="dropdown-item" href="#">High</a>
+                  <a class="dropdown-item" href="#">Critical</a>
+                </div>
+            </div> 
+    
+            <!-- sort by  -->
+    
+            <div class="dropdown col-sm-1 m-0 p-0">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Sort By
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Date</a>
+                  <a class="dropdown-item" href="#">Priority</a>
+                </div>
+          </div> 
+        </div>      
+  </div>    
     
     
+
+
+
+
+
 <!-- messages Display Area -->
+
+<div class="bg-light">
+   
+    
     <div id="accordion">
 
       <div class="card" ng-repeat="message in messages | filter: searchStr">
@@ -62,7 +66,7 @@
           <!-- messages title -->
           <h5 class="mb-0">
 
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="true" aria-controls="collapseOne">
               {{message.title}}
             </button>
             <!-- delete and update buttons  -->
@@ -88,7 +92,7 @@
     
          <!--message Body  -->
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div id="{{$index}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body row">
             <!-- message text (details) -->
             <div class="col-sm-6">
@@ -120,7 +124,7 @@
   </div>
 
 
-
+</main>
 
 
 

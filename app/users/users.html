@@ -1,25 +1,28 @@
 
-<!-- new tenant button -->
-<button type="button" class="btn btn-primary col-sm-2" data-toggle="modal" data-target="#newTenant">
-    New Tenant
-</button>
-
-<!-- searchfield -->
-<div class="container col-12"> 
-    
-    <div class="form-group has-feedback container">
-        <label class="control-label" for="inputSuccess2"></label>
-        <input type="search" class="form-control" id="inputSuccess2"/>
-        <span class="glyphicon glyphicon-search form-control-feedback"></span>
-    </div>
-
 
 
 <!-- users display area  -->
 
-<div id="accordion" class="container mt-5">
+<main class="container mt-3">
+
+    <div class="container border mt-3 ">
+        <div class="row" >    
+          <!-- new tenant button -->
+          <button type="button" class="btn btn-primary col-sm-2 " data-toggle="modal" data-target="#newTenant">
+              New Tenant
+          </button>
+      
+          <!-- search bar  -->
+          <div class=" col-sm-10 p-1">
+              <input class="col-12 " type="text" placeholder="Search.." id="search" ng-model="searchStr">              
+          </div>
+      
+        </div>  
+      </div>
+
+<div id="accordion">
     
-          <div class="card" ng-repeat="user in users">
+          <div class="card" ng-repeat="user in users | filter: searchStr">
             <div class="card-header" id="headingOne">
               
                 <!-- accordion title -->
@@ -67,85 +70,100 @@
     
       </div>
     
+</main>
+
+
+
+
 
 <!--New Tenant Modal-->
 
-<!-- The Modal -->
-<div class="modal fade" id="newTenant">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+
+
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="newTenant">
+    <div class="modal-dialog modal-dialog-centered modal-md">
       <div class="modal-content">
   
+
+
+
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">New Tenant</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
   
+
+
+
         <!-- Modal body -->
-        <div class="modal-body">
-          
-            <form class="message container bg-light">
-                
-              <!-- photo preview-->
-              <div class="col-sm-6">
-                <div class="col-sm-6">
-                  <img ng-src="{{user.img}}" class="img-fluid" >
-                </div>
-              <div>
-                    
-              <!-- Upload Photo: <input type="file" name="img class="fas fa-camera"><input type="submit"> -->
-                <div class="col-sm-6 custom-file" id="imgUpload" >
-                    <input type="file" value="Browse" fileread="user.img" name="img" >                    
-                </div>
-                    
-                    
-                </div>
-                
-              </div>
-
-              <!-- inputs  -->
-              <div class="col-sm-6 float-right">
-              
-                  <div class="form-group">
-                          <label for="fname">First name</label>
-                          <input type="text" class="form-control" id="fname" ng-model="user.fname">
-                  </div>
-                  
-                  <div class="form-group">
-                      <label for="fname">Last name</label>
-                      <input type="text" class="form-control" id="fname" ng-model="user.lname">
-                  </div>             
-                  
-                  <div class="form-group">
-                      <label for="email">eMail</label>
-                      <input type="email" class="form-control" id="email" ng-model="user.email">
-                  </div> 
-                  
-                  <div class="row"> 
-                    <div class="col-sm-6 form-group">
-                        <label for="building">Building</label>
-                        <input type="number" class="form-control" id="building" ng-model="user.building">
-                    </div> 
-                    <div class="col-sm-6 form-group">
-                        <label for="appartment">Appartment</label>
-                        <input type="number" class="form-control" id="appartment" ng-model="user.appartment">
-                    </div>   
-                  </div>      
-
-            </div>    
+        <div class="modal-body ">
             
-            </form>
+          
+            <!-- photo upload  -->
+            <div class="photoUpload container ">
+              <div class="px-auto">
+                <div class="">
+                   <img  ng-src="{{user.img}}"  style="max-width:250px;" >
+                </div>
+                                          
+                <!-- Upload Photo: <input type="file" name="img class="fas fa-camera"><input type="submit"> -->
+                <div class="mt-3 custom-file" id="imgUpload" >
+                    <input type="file" value="Browse" fileread="user.img" name="img" >                   
+                </div>
+              </div>
+            </div>
+            
 
 
+            
+            <!-- form inputs -->
+            <div class="inputs mt-3">
+              <form>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fname" ng-model="user.fname" placeholder="First name">
+              </div>
+              
+              <div class="form-group">
+                  <input type="text" class="form-control" id="fname" ng-model="user.lname" placeholder="Last name">
+              </div>             
+              
+              <div class="form-group">
+                  <input type="email" class="form-control" id="email1" ng-model="user.email" placeholder="eMail">
+              </div> 
+              
+              <div class="row"> 
+                <div class="col-sm-6 form-group">
+                    <input type="number" class="form-control" id="building" ng-model="user.building" placeholder="Building No.">
+                </div> 
+                <div class="col-sm-6 form-group">
+                    <input type="number" class="form-control" id="appartment" ng-model="user.appartment" placeholder="Appartment No.">
+                </div>   
+              </div>      
+
+              </form>
+
+            </div>
+        
+
+
+
+
+          
         </div>
   
         <!-- Modal footer -->
-        <div class="modal-footer">
+        <div class="modal-footer ">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="newTenant(user)">Create</button>
         </div>
   
       </div>
     </div>
-  </div>  
-  
+  </div>
