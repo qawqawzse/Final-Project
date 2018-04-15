@@ -4,7 +4,6 @@
 
 
 <div class="container mt-5 bg-light">
-<h1> Messages</h1>
 
  <!--Top messages bar- search, filters, and new message button  -->
 
@@ -17,27 +16,28 @@
           </button>
         
       <!-- search bar  -->
-          <div class="col-sm-6 container">
-              <input type="text" placeholder="Search.." id="search" ng-model="searchStr">              
+          <div class="col-sm-6 ">
+              <input class="col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">              
           </div>
         
           <!-- filter by priority -->
-          <div class="form-inline col-sm-2">
-              <label for="sel1">Priority:</label>
-              <select class="form-control" id="sel1" ng-model="message.priority">
-                <option>Low</option>  
-                <option>Medium</option>
-                <option>High</option>
-                <option>Critical</option>
-              </select>
-           
-          </div> 
+          <div class="dropdown col-sm-2" ng-model="message.priority">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              filter
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Low</a>
+              <a class="dropdown-item" href="#">Meduim</a>
+              <a class="dropdown-item" href="#">High</a>
+              <a class="dropdown-item" href="#">Critical</a>
+            </div>
+        </div> 
 
         <!-- sort by  -->
 
         <div class="dropdown col-sm-2">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              Sort Messages
+              Sort By
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Date</a>
@@ -56,7 +56,7 @@
 <!-- messages Display Area -->
     <div id="accordion">
 
-      <div class="card" ng-repeat="message in messages">
+      <div class="card" ng-repeat="message in messages | filter: searchStr">
         <div class="card-header" id="headingOne">
           
           <!-- messages title -->

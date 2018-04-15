@@ -46,6 +46,7 @@ messageService.getData().then(function() {
 });
 
 
+
 //retrieving new message from ui when user clicks submit
 
 $scope.msgSubmit=function(message){
@@ -61,6 +62,7 @@ $scope.delete=function(message){
     messageService.deleteMessage(id);
     console.log(id)
 }
+
 
 
 //update function not working 
@@ -80,6 +82,9 @@ $scope.comment=function(index, text){
 
     
 }
+
+//search messages 
+
 
 
    
