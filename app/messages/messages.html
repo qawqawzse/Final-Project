@@ -16,15 +16,14 @@
               </button>
             
           <!-- search bar  -->
-              <div class="col-sm-6 m-0 p-1">
+              <div class="col-sm-7 m-0 p-1">  
                   <input class=" col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">              
               </div>
             
               <!-- filter by priority -->
-              <div class="form-group col-sm-1 m-0 p-0">
+              <div class="form-group col-sm-1 ml-0 p-0">
                   
                   <select class="form-control" id="sel1" ng-model="priorityFilter">
-                    <option>  </option>
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
@@ -34,15 +33,11 @@
     
             <!-- sort by  -->
     
-            <div class="dropdown col-sm-2 ml-1 p-0">
-                <form>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio">Option 1
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="optradio">Option 2
-                    </label>
-                </form>
+            <div class="dropdown col-sm-1 ml-0 p-0 ">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary" ng-click="sortParam=''">All</button>
+                    <button type="button" class="btn btn-secondary" ng-click="sortParam=createdAt">Date</button>
+                </div>
           </div> 
         </div>      
   </div>    
@@ -60,7 +55,7 @@
     
     <div id="accordion">
 
-      <div class="card" ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter}">
+      <div class="card" ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
         <div class="card-header" id="headingOne">
           
           <!-- messages title -->
@@ -71,21 +66,13 @@
             </button>
             <!-- delete and update buttons  -->
             <div class="float-right">
-            <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">Update</button>
+              <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">Update</button>
             </div>
 
           </h5>
       
-          <div>Priority:
-            {{message.priority}}
-          </div>
-          <div>Created By:
-              {{message.createdBy}}
-          </div>
-          <div>Created At:
-              {{message.createdAt}} 
-          </div>
+          
         </div>
     
          <!--message Body  -->
