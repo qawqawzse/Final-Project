@@ -101,13 +101,15 @@ function deleteMessage(id){
 
 function updateMessage(message,id){
 
+    console.log(message) 
+    console.log(id)
     messages[id].createdBy=message.createdBy;
     messages[id].createdAt=new Date();
     messages[id].title=message.title;
     messages[id].details=message.details;
     messages[id].priority=message.priority;
     
- console.log(messages)  
+  
    
 }
 

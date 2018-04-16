@@ -142,6 +142,23 @@ app.factory("userService", function ($http, $log, $q) {
         users.splice(id,1); 
     }
 
+    // user updated function 
+
+    function userUpdate(id, user){
+        users[id].
+        users[id].email = user.email;
+        users[id].password = user.password;
+        users[id].fname = user.fname;
+        users[id].lname = user.lname;
+        users[id].building = user.building;
+        users[id].appartment = user.appartment;
+        users[id].img = user.img;
+        users[id].communityName=user.communityName;
+        users[id].address=user.address;
+
+        console.log (user);
+        console.log (users[id])
+    }
 
 return{
 
@@ -151,7 +168,8 @@ return{
     newOwner:newOwner, 
     loginCheck:loginCheck,
     loggedIn:loggedIn,
-    deleteUser:deleteUser
+    deleteUser:deleteUser,
+    userUpdate:userUpdate
 
 }
 

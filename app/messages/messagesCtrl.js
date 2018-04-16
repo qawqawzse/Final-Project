@@ -70,8 +70,9 @@ $scope.delete=function(message){
 $scope.update=function(message){
 
     var id=$scope.messages.indexOf(message);
-    messageService.updateMessage(message,id);
-    
+    messageService.updateMessage(message, id);
+    console.log(id);
+    console.log(message)    
 }
 
 //saving comment input into the message object
