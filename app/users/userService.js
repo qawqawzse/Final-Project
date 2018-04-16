@@ -135,6 +135,13 @@ app.factory("userService", function ($http, $log, $q) {
     }
 
 
+    //deleting a user 
+
+    function deleteUser(id){
+
+        users.splice(id,1); 
+    }
+
 
 return{
 
@@ -143,7 +150,8 @@ return{
     newTenant:newTenant,
     newOwner:newOwner, 
     loginCheck:loginCheck,
-    loggedIn:loggedIn
+    loggedIn:loggedIn,
+    deleteUser:deleteUser
 
 }
 

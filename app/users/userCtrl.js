@@ -22,6 +22,32 @@ $scope.newTenant=function(user){
 }
 
 
+$scope.delete=function(user){
+
+    var id=$scope.users.indexOf(user);
+    userService.deleteUser(id);
+    console.log(id)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });    
 
