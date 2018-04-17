@@ -35,8 +35,8 @@
     
             <div class="dropdown col-sm-1 ml-0 p-0 ">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-secondary" ng-click="sortParam=''">All</button>
-                    <button type="button" class="btn btn-secondary" ng-click="sortParam=createdAt">Date</button>
+                    <button type="button" class="btn btn-secondary" ng-click="sortParam='title'">All</button>
+                    <button type="button" class="btn btn-secondary" ng-click="sortParam='createdAt'">Date</button>
                 </div>
           </div> 
         </div>      
@@ -56,7 +56,7 @@
     <div id="accordion">
 
       <div class="card" ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
-        <div class="card-header" id="headingOne">
+        <div class="card-header" id="headingOne"> {{message.createdAt}}
           
           <!-- messages title -->
           <h5 class="mb-0">
@@ -67,7 +67,7 @@
             <!-- delete and update buttons  -->
             <div class="float-right">
               <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">Update</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="updateMsg(message)">Update</button>
             </div>
 
           </h5>
@@ -209,17 +209,17 @@
                 
                   <div class="form-group">
                           <label for="messageTitle">Message Title</label>
-                          <input type="text" class="form-control" id="messageTitle" ng-model="message.title" >
+                          <input type="text" class="form-control" id="messageTitle" ng-model="selectedMessage.title" >
                   </div>
       
                   <div class="form-group">
                           <label for="messageDetails">Message Details</label>
-                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
+                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="selectedMessage.details"></textarea>
                   </div>
                   
                   <div class="form-group">
                           <label for="sel1">Priority:</label>
-                          <select class="form-control" id="sel1" ng-model="message.priority">  
+                          <select class="form-control" id="sel1" ng-model="selectedMessage.priority">  
                             <option>Low</option>
                             <option>Medium</option>
                             <option>High</option>

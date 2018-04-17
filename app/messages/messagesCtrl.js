@@ -10,7 +10,7 @@ $scope.users=[];
 
 //active user innitialization 
 $scope.activeUser={};
-
+$scope.selectedMessage = {};
 $scope.activeUser=userService.loggedIn();
 
 //demo user function - should be replaced and routed to login when no user is looged !!!
@@ -82,6 +82,10 @@ $scope.comment=function(index, text){
     messageService.newComment($scope.activeUser.fname+" "+$scope.activeUser.lname , index, text);
 
     
+}
+
+$scope.updateMsg = function (message) {
+    $scope.selectedMessage = message;
 }
 
 //search messages 
