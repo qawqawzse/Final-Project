@@ -1,0 +1,21 @@
+.pageColor {
+
+    background-color:black;
+    overflow: hidden;
+
+
+}
+
+.home-photo {
+
+    background-image:url("assets/homePhoto.jpeg");
+    width:100%;
+    height:100%;
+
+}
+
+.home-container{
+
+    margin-top:50px;  
+    opacity:0.8;
+}
