@@ -24,7 +24,6 @@
               <div class="form-group col-sm-1 ml-0 p-0">
                   
                   <select class="form-control" id="sel1" ng-model="priorityFilter">
-                    <option value="">All</option>                 
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
@@ -36,8 +35,8 @@
     
             <div class="dropdown col-sm-1 ml-0 p-0 ">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-secondary" ng-click="sortParam='title'">All</button>
-                    <button type="button" class="btn btn-secondary" ng-click="sortParam='createdAt'">Date</button>
+                    <button type="button" class="btn btn-secondary" ng-click="sortParam=''">All</button>
+                    <button type="button" class="btn btn-secondary" ng-click="sortParam=createdAt">Date</button>
                 </div>
           </div> 
         </div>      
@@ -57,19 +56,21 @@
     <div id="accordion">
 
       <div class="card" ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
-        <div class="card-header" id="headingOne"> {{message.createdAt}}
+        <div class="card-header" id="headingOne">
           
+          <!-- Author photo -->
+          <div></div>
+
+          <!-- Author name -->
+          <div>{{message.createdBy}}</div>         
+
           <!-- messages title -->
           <h5 class="mb-0">
 
-            <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="true" aria-controls="collapseOne">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">
               {{message.title}}
             </button>
-            <!-- delete and update buttons  -->
-            <div class="float-right">
-              <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="updateMsg(message)">Update</button>
-            </div>
+           
 
           </h5>
       
@@ -78,7 +79,7 @@
     
          <!--message Body  -->
 
-        <div id="{{$index}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div id="{{$index}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body row">
             <!-- message text (details) -->
             <div class="col-sm-6">
@@ -97,6 +98,12 @@
                 </div>
                 <input type="text" ng-model="text"><button type="btn" class="btn btn primary" ng-click="comment($index,text)">Comment</button>
             </div>
+
+             <!-- delete and update buttons  -->
+             <div class="float-right">
+                <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">Update</button>
+              </div>
             
           </div>
         </div>
@@ -210,17 +217,17 @@
                 
                   <div class="form-group">
                           <label for="messageTitle">Message Title</label>
-                          <input type="text" class="form-control" id="messageTitle" ng-model="selectedMessage.title" >
+                          <input type="text" class="form-control" id="messageTitle" ng-model="message.title" >
                   </div>
       
                   <div class="form-group">
                           <label for="messageDetails">Message Details</label>
-                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="selectedMessage.details"></textarea>
+                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
                   </div>
                   
                   <div class="form-group">
                           <label for="sel1">Priority:</label>
-                          <select class="form-control" id="sel1" ng-model="selectedMessage.priority">  
+                          <select class="form-control" id="sel1" ng-model="message.priority">  
                             <option>Low</option>
                             <option>Medium</option>
                             <option>High</option>
