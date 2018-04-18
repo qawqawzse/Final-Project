@@ -160,6 +160,21 @@ app.factory("userService", function ($http, $log, $q) {
         console.log (users[id])
     }
 
+
+    function getUserImage (id){
+
+        for (i=0; i<users.lenth; i++){
+
+            if (user.id===id){
+                return user.img 
+            }else {
+                return false;
+            }
+
+
+        }
+        
+    }
 return{
 
     users: users,
@@ -169,7 +184,8 @@ return{
     loginCheck:loginCheck,
     loggedIn:loggedIn,
     deleteUser:deleteUser,
-    userUpdate:userUpdate
+    userUpdate:userUpdate,
+    getUserImage:getUserImage
 
 }
 

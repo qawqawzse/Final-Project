@@ -71,12 +71,13 @@ function getData() {
 
  //new message creation from UI 
 
-function newMessage(message){
+function newMessage(user, message){
 
     console.log(message)
+    
     message.createdAt=new Date();
 
-    message.createdBy="TBD";
+    message.createdBy=user.fname +" "+ user.lname;
 
     var x=new Message(message);
 

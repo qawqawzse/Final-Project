@@ -2,17 +2,19 @@
 
     
 
-<main class="container">
+<main class="container bg-light mt-5">
+
+
 
 <!--Top messages bar- search, filters, and new message button  -->
 
-<div class="container mt-3 bg-light  ">
+<div class="container bg-light  ">
     
           <!-- new message button -->
           <div class="row">
   
-              <button type="button" class="btn btn-primary col-sm-2 m-0 p-0 " data-toggle="modal" data-target="#NewMessageModal">
-                  New Message
+              <button type="button" class="btn btn-outline-primary col-sm-1 m-auto  " data-toggle="modal" data-target="#NewMessageModal">
+                  <i class="fas fa-plus "></i>  <span class="m-auto p-auto">Message</span>
               </button>
             
           <!-- search bar  -->
@@ -42,9 +44,36 @@
         </div>      
   </div>    
     
-    
+  <hr>  
 
 
+<!-- All and Critical button navigators  -->
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='' ">All</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Critical' ">Critical</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='High' ">High</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Medium' ">Medium</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Low' ">Low</a>
+      </li>  
+  </ul>
+  
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active container" id="home">...</div>
+    <div class="tab-pane container" id="menu1">...</div>
+    <div class="tab-pane container" id="menu2">...</div>
+  </div>
 
 
 
@@ -56,24 +85,50 @@
     <div id="accordion">
 
       <div class="card" ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
-        <div class="card-header" id="headingOne">
-          
-          <!-- Author photo -->
-          <div></div>
+        <div class="card-header " id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
 
-          <!-- Author name -->
-          <div>{{message.createdBy}}</div>         
+            <div class="row">   
 
-          <!-- messages title -->
-          <h5 class="mb-0">
+              <!-- Author photo -->
+              <div class="col-sm-1">
+                <img style="width:50px;" src="assets/manTenant.png">
+                <div ng-repeat="user in message.createdBy" ng-show="userImg(user)">
+                  <img src="{{authorPhoto}}">
+                </div>
+              </div>    
+              <!-- Author name -->
+              <div class="my-auto col-sm-2">
+                 <div ng-repeat="user in message.createdBy">{{user.fname}} {{user.lname }} </div>                       
+              </div>    
+              
+              <!-- messages title -->
+              <h5 class="my-auto col-sm-6">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">
+                  {{message.title}}
+                </button>
+              </h5>
+              
+              
+              
+              <!-- creation date and time -->
+              <div class="col-sm-2 ml-auto">
+                  <!-- Creation Date -->
+                  <div>
+                    <p>{{message.createdAt|date:'dd/MM/yyyy'}}</p>
+                  </div>
+                  <!-- creation hour -->
+                  <div>
+                    <p>{{message.createdAt|date:'HH:mm:ss'}}</p>
+                  </div>
+              </div>    
 
-            <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">
-              {{message.title}}
-            </button>
-           
+              <!-- priority icon -->
+              <div class="border p-auto m-auto">
+                  <i ng-show="message.priority=='High' || message.priority=='Medium' || message.priority=='Low' " class="text-primary fas fa-info fa-2x" ></i>
+                  <i ng-show="message.priority=='Critical' " class="text-danger fas fa-exclamation fa-2x"></i>
+              </div>
 
-          </h5>
-      
+            </div>  
           
         </div>
     
@@ -88,7 +143,7 @@
                 <p>Priority:{{message.priority}}</p>
             </div>
             <!-- message comments section -->
-            <div class="col-sm-6" style="max-height: 200px; overflow-y: auto;">
+            <div class="col-sm-6">
                 <h6>Comments</h6>
                 <div >
                     <div class="border m-1" ng-repeat="comment in message.comments">                    

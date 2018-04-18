@@ -12,6 +12,8 @@ $scope.users=[];
 $scope.activeUser={};
 $scope.selectedMessage = {};
 $scope.activeUser=userService.loggedIn();
+$scope.authorPhoto; 
+
 
 //demo user function - should be replaced and routed to login when no user is looged !!!
 
@@ -51,7 +53,7 @@ messageService.getData().then(function() {
 
 $scope.msgSubmit=function(message){
 
-    messageService.newMessage(message);
+    messageService.newMessage($scope.activeUser, message);
    
 }    
 
@@ -89,6 +91,20 @@ $scope.updateMsg = function (message) {
 }
 
 //search messages 
+
+// retrieving user image 
+
+$scope.userImg=function(user){
+
+    var photo=userService.getUserImage(user.id);
+
+    if (photo===false || photo===undefined ){
+        $scope.authorPhoto="assets/manTenant.png" 
+    }else{
+        $scope.authorPhoto=photo;
+    }
+
+}
 
 
 
