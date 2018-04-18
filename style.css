@@ -1,8 +1,7 @@
 .pageColor {
 
-    background-color:black;
     overflow: hidden;
-
+    background-image:url("assets/homePhoto.jpeg");
 
 }
 
