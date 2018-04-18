@@ -1,171 +1,239 @@
-
-
-    
-
-<main class="container bg-light mt-5">
+<main class="container bg-light mt-5 p-4">
 
 
 
-<!--Top messages bar- search, filters, and new message button  -->
+  <!--Top messages bar- search, filters, and new message button  -->
 
-<div class="container bg-light  ">
-    
-          <!-- new message button -->
-          <div class="row">
-  
-              <button type="button" class="btn btn-outline-primary col-sm-1 m-auto  " data-toggle="modal" data-target="#NewMessageModal">
-                  <i class="fas fa-plus "></i>  <span class="m-auto p-auto">Message</span>
-              </button>
-            
-          <!-- search bar  -->
-              <div class="col-sm-7 m-0 p-1">  
-                  <input class=" col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">              
-              </div>
-            
-              <!-- filter by priority -->
-              <div class="form-group col-sm-1 ml-0 p-0">
-                  
-                  <select class="form-control" id="sel1" ng-model="priorityFilter">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                    <option>Critical</option>
-                  </select>
-                </div>
-    
-            <!-- sort by  -->
-    
-            <div class="dropdown col-sm-1 ml-0 p-0 ">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-secondary" ng-click="sortParam=''">All</button>
-                    <button type="button" class="btn btn-secondary" ng-click="sortParam=createdAt">Date</button>
-                </div>
-          </div> 
-        </div>      
-  </div>    
-    
-  <hr>  
+  <div class="container">
+
+    <!-- new message button -->
+    <div class="row ">
+
+      <div class="col-sm-2  my-auto  ">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#NewMessageModal">
+          <i class="fas fa-plus "></i>
+          <span class="m-auto p-auto">New Message</span>
+        </button>
+      </div>
+      <!-- search bar  -->
+      <div class="col-sm-6 my-auto ml-auto ">
+        <input class=" col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">
+      </div>
+
+    </div>
+  </div>
+
+  <hr>
 
 
-<!-- All and Critical button navigators  -->
 
-<!-- Nav tabs -->
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='' ">All</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Critical' ">Critical</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='High' ">High</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Medium' ">Medium</a>
-      </li>
-      <li class="nav-item">
+
+
+  <!-- All and Critical button navigators  -->
+
+  <!-- Nav tabs -->
+  <div class="container row ">
+    <div class="col-sm-8">
+      <ul class="nav nav-tabs">
+        
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='' ">
+            <span class="badge badge-danger">{{counter.all}}</span> All</a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Critical' ">Critical</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='High' ">High</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Medium' ">Medium</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Low' ">Low</a>
-      </li>  
-  </ul>
-  
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div class="tab-pane active container" id="home">...</div>
-    <div class="tab-pane container" id="menu1">...</div>
-    <div class="tab-pane container" id="menu2">...</div>
+        </li>
+      </ul>
+    </div>
+    <!-- sorting messages by date, name,  -->
+    <div class="col-sm-4 ml-auto ">
+      <div class="dropdown ">
+        <div class="btn-group">
+          <p class="mr-3 my-auto ">sort by:</p>
+          <button type="button" class="btn " ng-click="sortParam=''">All</button>
+          <button type="button" class="btn " ng-click="sortParam='createdAt'">Time</button>
+          <button type="button" class="btn " ng-click="sortParam='createdBy'">Name</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
 
-<!-- messages Display Area -->
 
-<div class="bg-light">
-   
-    
+
+
+
+
+
+
+  <!-- messages Display Area -->
+
+  <div class="bg-light mt-3">
+
+
     <div id="accordion">
 
-      <div class="card" ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
-        <div class="card-header " id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
+      <div ng-class="card " ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
+        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
 
-            <div class="row">   
+          <div class="row ">
 
-              <!-- Author photo -->
-              <div class="col-sm-1">
-                <img style="width:50px;" src="assets/manTenant.png">
-                <div ng-repeat="user in message.createdBy" ng-show="userImg(user)">
-                  <img src="{{authorPhoto}}">
-                </div>
-              </div>    
-              <!-- Author name -->
-              <div class="my-auto col-sm-2">
-                 <div ng-repeat="user in message.createdBy">{{user.fname}} {{user.lname }} </div>                       
-              </div>    
-              
-              <!-- messages title -->
-              <h5 class="my-auto col-sm-6">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="false" aria-controls="{{$index}}">
-                  {{message.title}}
-                </button>
-              </h5>
-              
-              
-              
-              <!-- creation date and time -->
-              <div class="col-sm-2 ml-auto">
-                  <!-- Creation Date -->
-                  <div>
-                    <p>{{message.createdAt|date:'dd/MM/yyyy'}}</p>
-                  </div>
-                  <!-- creation hour -->
-                  <div>
-                    <p>{{message.createdAt|date:'HH:mm:ss'}}</p>
-                  </div>
-              </div>    
-
-              <!-- priority icon -->
-              <div class="border p-auto m-auto">
-                  <i ng-show="message.priority=='High' || message.priority=='Medium' || message.priority=='Low' " class="text-primary fas fa-info fa-2x" ></i>
-                  <i ng-show="message.priority=='Critical' " class="text-danger fas fa-exclamation fa-2x"></i>
+            <!-- Author photo -->
+            <div class="col-sm-1 ">
+              <img style="width:50px;" src="assets/manTenant.png">
+              <div ng-repeat="user in message.createdBy" ng-show="userImg(user)">
+                <img src="{{authorPhoto}}">
               </div>
+            </div>
+            <!-- Author name -->
+            <div class="my-auto col-sm-2">
+              <div ng-repeat="user in message.createdBy">{{user.fname}} {{user.lname }} </div>
+            </div>
 
-            </div>  
-          
+            <!-- messages title -->
+            <div class="my-auto col-sm-5 ">
+              <h6 class="text-secondary"> {{message.title}} </h6>
+            </div>
+
+
+
+            <!-- creation date and time -->
+            <div class="col-sm-2 ml-auto">
+              <!-- Creation Date -->
+              <div>
+                <p>{{message.createdAt|date:'dd/MM/yyyy'}}</p>
+              </div>
+              <!-- creation hour -->
+              <div>
+                <p>{{message.createdAt|date:'HH:mm:ss'}}</p>
+              </div>
+            </div>
+
+            <!-- message comments number and icon -->
+            <div class="col-sm-1 my-auto">
+
+              <p class="badge ">{{message.comments.length}}</p>
+              <i class="fas fa-comments fa-2x"></i>
+
+            </div>
+            <!-- priority icon -->
+            <div class=" col-sm-1 p-auto m-auto">
+              <i ng-show="message.priority=='High' || message.priority=='Medium' || message.priority=='Low' " class="text-primary fas fa-info fa-2x"></i>
+              <i ng-show="message.priority=='Critical' " class="text-danger fas fa-exclamation fa-2x"></i>
+            </div>
+
+          </div>
+
         </div>
-    
-         <!--message Body  -->
+
+        <!--message Body  -->
 
         <div id="{{$index}}" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
           <div class="card-body row">
             <!-- message text (details) -->
+
             <div class="col-sm-6">
-                <h6>Message Details</h6>
+
+              <div>
+                <div>
+                  <h6>
+                    <i class="mr-1 fas fa-info"></i> Message Details</h6>
+                </div>
+                <hr>
+
                 <p>{{message.details}}</p>
                 <p>Priority:{{message.priority}}</p>
-            </div>
-            <!-- message comments section -->
-            <div class="col-sm-6">
-                <h6>Comments</h6>
-                <div >
-                    <div class="border m-1" ng-repeat="comment in message.comments">                    
-                      <h6>{{comment.createdBy}} <time>{{message.createdAt}}</time></h6>                  
-                      <p>{{comment.text}}</p>
-                    </div>
+              </div>
+
+              <div>
+                <!-- Creation Date -->
+                <div>
+                  <p>Created At: {{message.createdAt|date:'dd/MM/yyyy'}}</p>
                 </div>
-                <input type="text" ng-model="text"><button type="btn" class="btn btn primary" ng-click="comment($index,text)">Comment</button>
+                <!-- creation hour -->
+                <div>
+                  <p>Time: {{message.createdAt|date:'HH:mm:ss'}}</p>
+                </div>
+              </div>
+
+            
+            <!-- delete and update buttons  -->
+            <div class="mt-auto">
+                <button type="btn" class="btn btn-primary" ng-click="delete(message)">
+                    <i class="far fa-trash-alt"></i></button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">
+                    <i class="far fa-edit"></i></button>
+            </div>
+            
+            
+            
+            </div>
+            <!-- creation date and time -->
+
+
+
+
+
+            <!-- message comments section -->
+
+
+            <div class="col-sm-6 position-relative">
+              <!-- comment area  header -->
+              <div class="row">
+                <h6>
+                  <i class="mr-1 fas fa-comments"></i> Comments
+                  <span class="badge badge-warning">{{message.comments.length}}</span>
+                </h6>
+              </div>
+
+              <hr>
+              <!-- comment details -->
+              <div>
+                <div class=" m-1" ng-repeat="comment in message.comments">
+                  <!-- comment title  -->
+                  <div class="container row">
+                    <h6>{{comment.createdBy}}</h6>
+                    <time class="ml-auto" > {{comment.createdAt|date:'HH:mm:ss'}}</time>
+                  </div>
+                  <!-- comment posting hour  -->
+                  <div>
+                    <time>{{comment.createdAt|date:'dd/MM/yyyy'}}</time>
+                  </div>
+                  <!-- comment text and details  -->
+                  <div>
+                    <p>{{comment.text}}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- comments input -->
+              <div class="container mt-auto">
+                <div class="row">
+                  <input class="col-8" type="text" ng-model="text" placeholder="Write a comment..">
+                  <button type="btn" class="btn btn-primary" ng-click="comment($index,text)">Comment</button>
+                </div>
+              </div>  
             </div>
 
-             <!-- delete and update buttons  -->
-             <div class="float-right">
-                <button type="btn" class="btn btn-primary" ng-click="delete(message)">Delete</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">Update</button>
-              </div>
             
+
           </div>
         </div>
-        
-        
+
+
       </div>
-      
+
     </div>
 
 
@@ -174,149 +242,145 @@
 
 </main>
 
-
+<hr>
 
 
 <!-- modal screens  -->
 
-  <!--New message modal dialog -->
+<!--New message modal dialog -->
 
 
-  
-  <!-- The Modal -->
-  <div class="modal fade" id="NewMessageModal">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">New Message</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          
-            <form class="message container bg-light">
-                
-                  <div class="form-group">
-                          <label for="messageTitle">Message Title</label>
-                          <input type="text" class="form-control" id="messageTitle" ng-model="message.title">
-                  </div>
-      
-                  <div class="form-group">
-                          <label for="messageDetails">Message Details</label>
-                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
-                  </div>
-                  
-                  <div class="form-group">
-                          <label for="sel1">Priority:</label>
-                          <select class="form-control" id="sel1" ng-model="message.priority">
-                            <option>Low</option>
-                            <option>Medium</option>
-                            <option>High</option>
-                            <option>Critical</option>
-                          </select>
-                  </div> 
-      
-                  <div>
-                          <time>Created At: X</time>
-                  </div>
-      
-                  <div>
-                          <time>Created By: Current user(x)</time>
-                  </div>
-                  
-                  
-      
-                        
-              </form>
 
+<!-- The Modal -->
+<div class="modal fade" id="NewMessageModal">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
 
-        </div>
-
-            
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="msgSubmit(message)">Submit</button>
-        </div>
-  
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <img class="img-fluid" style="max-width:50px;" src="{{activeUser.img}}">
+        <h4 class="ml-3 modal-title my-auto text-primary">New Message</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-    </div>
-  </div>  
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form class="message container bg-light">
+
+          <div class="form-group">
+            <label for="messageTitle">Message Title</label>
+            <input type="text" class="form-control" id="messageTitle" ng-model="message.title">
+          </div>
+
+          <div class="form-group">
+            <label for="messageDetails">Message Details</label>
+            <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="sel1">Priority:</label>
+            <select class="form-control" id="sel1" ng-model="message.priority">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+              <option>Critical</option>
+            </select>
+          </div>
+
+          <div>
+            <time>Created At: X</time>
+          </div>
+
+          <div>
+            <time>Created By: Current user(x)</time>
+          </div>
 
 
 
 
+        </form>
 
 
-   <!-- update message dialog  -->
-
-
-  <!-- The Modal -->
-  <div class="modal fade" id="updateModal">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-  
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Update Message (should be fixed)</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-        <!-- Modal body -->
-        <div class="modal-body">
-          
-            <form class="message container bg-light">
-                
-                  <div class="form-group">
-                          <label for="messageTitle">Message Title</label>
-                          <input type="text" class="form-control" id="messageTitle" ng-model="message.title" >
-                  </div>
-      
-                  <div class="form-group">
-                          <label for="messageDetails">Message Details</label>
-                          <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
-                  </div>
-                  
-                  <div class="form-group">
-                          <label for="sel1">Priority:</label>
-                          <select class="form-control" id="sel1" ng-model="message.priority">  
-                            <option>Low</option>
-                            <option>Medium</option>
-                            <option>High</option>
-                            <option>Critical</option>
-                          </select>
-                  </div> 
-      
-                  <div>
-                          <time>Created At: X</time>
-                  </div>
-      
-                  <div>
-                          <time>Created By: Current user(x)</time>
-                  </div>
-                  
-                  
-      
-                        
-              </form>
-
-
-        </div>
-  
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="update(message)">Update</button>
-        </div>
-  
       </div>
-    </div>
-  </div>  
-  
 
-  
-  
- 
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="msgSubmit(message)">Submit</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- update message dialog  -->
+
+
+<!-- The Modal -->
+<div class="modal fade" id="updateModal">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Update Message (should be fixed)</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <form class="message container bg-light">
+
+          <div class="form-group">
+            <label for="messageTitle">Message Title</label>
+            <input type="text" class="form-control" id="messageTitle" ng-model="message.title">
+          </div>
+
+          <div class="form-group">
+            <label for="messageDetails">Message Details</label>
+            <textarea class="form-control" rows="5" id="messageDetails" ng-model="message.details"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="sel1">Priority:</label>
+            <select class="form-control" id="sel1" ng-model="message.priority">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+              <option>Critical</option>
+            </select>
+          </div>
+
+          <div>
+            <time>Created At: X</time>
+          </div>
+
+          <div>
+            <time>Created By: Current user(x)</time>
+          </div>
+
+
+
+
+        </form>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-default" data-dismiss="modal" ng-click="update(message)">Update</button>
+      </div>
+
+    </div>
+  </div>
+</div>

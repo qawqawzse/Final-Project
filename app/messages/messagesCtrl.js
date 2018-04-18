@@ -8,11 +8,19 @@ $scope.users=[];
     $scope.users = userService.users;
 });
 
+
 //active user innitialization 
 $scope.activeUser={};
 $scope.selectedMessage = {};
 $scope.activeUser=userService.loggedIn();
 $scope.authorPhoto; 
+
+// unread messages counter 
+
+$scope.counter={};
+$scope.counter=messageService.badgeCounter();
+console.log(counter);   
+
 
 
 //demo user function - should be replaced and routed to login when no user is looged !!!
@@ -105,6 +113,10 @@ $scope.userImg=function(user){
     }
 
 }
+
+
+
+
 
 
 

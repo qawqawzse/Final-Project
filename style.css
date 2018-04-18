@@ -1,3 +1,5 @@
+
+
 .pageColor {
 
     overflow: hidden;
@@ -19,3 +21,7 @@
     opacity:0.8;
 }
 
+.unread-message{
+
+    background-color:floralwhite;
+}
