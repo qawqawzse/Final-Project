@@ -43,19 +43,19 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Critical' ">
-            Critical <span ng-show="counter()" class="badge badge-default">({{counter.critical}})</span></a> 
+            Critical <span ng-show="counter()" class="badge badge-warning">{{counter.critical}}</span></a> 
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='High' ">
-            High<span ng-show="counter()" class="badge badge-default">({{counter.high}})</span></a>
+            High<span ng-show="counter()" class="badge badge-light">({{counter.high}})</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Medium' ">
-           Medium <span ng-show="counter()" class="badge badge-default">({{counter.medium}})</span></a> 
+           Medium <span ng-show="counter()" class="badge badge-light">({{counter.medium}})</span></a> 
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Low' ">
-            Low <span ng-show="counter()" class="badge badge-default">({{counter.low}})</span></a>
+            Low <span ng-show="counter()" class="badge badge-light">({{counter.low}})</span></a>
         </li>
       </ul>
     </div>
