@@ -14,6 +14,7 @@ $scope.activeUser={};
 $scope.selectedMessage = {};
 $scope.activeUser=userService.loggedIn();
 $scope.authorPhoto; 
+$scope.authorPhotoComment;
 
 // unread messages counter 
 
@@ -96,7 +97,6 @@ $scope.updateMsg = function (message) {
     $scope.selectedMessage = message;
 }
 
-//search messages 
 
 // retrieving user image 
 
@@ -131,6 +131,40 @@ $scope.userImg=function(message){
 }
 
 
+// retrieving author photo for comments 
+
+$scope.commentUserImg=function(comment){
+
+    var userName=comment.createdBy;    
+    var author="";
+
+    console.log(userName + "comment user")
+
+    for(i=0; i<$scope.users.length; i++){
+
+        if(userName===$scope.users[i].fname +" "+ $scope.users[i].lname){
+            author=$scope.users[i];
+        }
+
+    }
+
+    $scope.authorPhotoComment=author.img;
+
+    console.log($scope.authorPhotoComment)
+    console.log(author.img)
+   
+    
+    if ($scope.authorPhotoComment==undefined || $scope.authorPhotoComment==""){
+
+        $scope.authorPhotoComment="assets/avatar.jpg";
+
+        
+    }
+    
+    return true;
+}
+
+// retrieving message read/unread status 
 
 $scope.isRead=function(message){
 
@@ -140,7 +174,7 @@ $scope.isRead=function(message){
     }
 }
 
-
+// read/unread messages counter for page tabs  
 
 $scope.counter=function (){
     

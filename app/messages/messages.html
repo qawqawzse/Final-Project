@@ -208,6 +208,7 @@
                 <div class=" m-1" ng-repeat="comment in message.comments">
                   <!-- comment title  -->
                   <div class="container row">
+                    <img ng-show="commentUserImg(comment)" class="comment-author" src="{{authorPhotoComment}}">
                     <h6>{{comment.createdBy}}</h6>
                     <time class="ml-auto" > {{comment.createdAt|date:'HH:mm:ss'}}</time>
                   </div>

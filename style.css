@@ -7,6 +7,14 @@
 
 }
 
+
+
+.page-scroll{
+
+    overflow: auto;
+
+}
+
 .home-photo {
 
     background-image:url("assets/homePhoto.jpeg");
@@ -32,5 +40,12 @@
     width:50px;
     background-image:url("assets/manTenant.png");
     
+}
+
+.comment-author{
+
+    width:30px;
+    height:30px;
+       
 }
 
