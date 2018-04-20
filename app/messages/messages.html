@@ -38,7 +38,7 @@
         
         <li class="nav-item">
           <a class="nav-link active" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='' ">
-            <span class="badge badge-danger">{{counter.all}}</span> All</a>
+            <span ng-show="counter()" class="badge badge-danger">{{counter.all}}</span>All</a>
 
         </li>
         <li class="nav-item">
@@ -85,21 +85,21 @@
 
     <div id="accordion">
 
-      <div ng-class="card " ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
-        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
+      <div class="card "  ng-click="isRead(message)" ng-class="{unread: message.isRead==false}"  ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
+        <div class="card-header"  id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
 
-          <div class="row ">
+          <div class="row" >
 
             <!-- Author photo -->
             <div class="col-sm-1 ">
-              <img style="width:50px;" src="assets/manTenant.png">
-              <div ng-repeat="user in message.createdBy" ng-show="userImg(user)">
-                <img src="{{authorPhoto}}">
+              
+              <div class="author-photo">
+                <img class="img-fluid" ng-show="userImg(message)" src="{{authorPhoto}}">
               </div>
             </div>
             <!-- Author name -->
             <div class="my-auto col-sm-2">
-              <div ng-repeat="user in message.createdBy">{{user.fname}} {{user.lname }} </div>
+              <div >{{message.createdBy}} </div>
             </div>
 
             <!-- messages title -->

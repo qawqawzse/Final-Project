@@ -17,10 +17,11 @@ $scope.authorPhoto;
 
 // unread messages counter 
 
-$scope.counter={};
-$scope.counter=messageService.badgeCounter();
-console.log(counter);   
+$scope.counter={
+    
+};
 
+console.log($scope.counter)
 
 
 //demo user function - should be replaced and routed to login when no user is looged !!!
@@ -102,21 +103,94 @@ $scope.updateMsg = function (message) {
 
 // retrieving user image 
 
-$scope.userImg=function(user){
+$scope.userImg=function(message){
 
-    var photo=userService.getUserImage(user.id);
+    var userName=message.createdBy;    
+    var author="";
 
-    if (photo===false || photo===undefined ){
-        $scope.authorPhoto="assets/manTenant.png" 
-    }else{
-        $scope.authorPhoto=photo;
+    console.log(userName)
+
+    for(i=0; i<$scope.users.length; i++){
+
+        if(userName===$scope.users[i].fname +" "+ $scope.users[i].lname){
+            author=$scope.users[i];
+        }
+
     }
 
+    $scope.authorPhoto=author.img;
+
+    
+   
+    
+    if ($scope.authorPhoto==undefined || $scope.authorPhoto==""){
+
+        $scope.authorPhoto="assets/avatar.jpg";
+
+        
+    }
+    
+    return true;
 }
 
 
 
+$scope.isRead=function(message){
 
+    if (message.isRead==false){
+
+        message.isRead=true;
+    }
+}
+
+
+
+$scope.counter=function (){
+    
+      
+    
+    $scope.counter.all=$scope.messages.read;
+    $scope.counter.high=2;
+  
+  console.log($scope.counter);
+    return true;
+
+    // for (i=0; i<$scope.messages.length; i++){
+        
+    //     // if ($scope.messages[i].read==false){
+            
+    //         $scope.counter.all=$scope.counter.all+1;
+
+            
+    //         if($scope.messages[i].priority==="Critical"){
+                
+    //             counter.critical=$scope.counter.critical+1;
+    //         }
+
+    //         if(messages[i].priority==="High"){
+                
+    //             $scope.counter.high=$scope.counter.high+1;
+    //         }
+
+    //         if(messages[i].priority==="Medium"){
+                
+    //             $scope.counter.medium=$scope.counter.medium+1;
+    //         }
+
+    //         if(messages[i].priority==="Low"){
+                
+    //             $scope.counter.low=$scope.counter.low+1;
+    //         }
+
+
+    //     // }
+
+       
+    
+
+
+    
+}
 
 
 

@@ -21,7 +21,16 @@
     opacity:0.8;
 }
 
-.unread-message{
+.unread{
 
-    background-color:floralwhite;
+   background-color:rgb(245, 249, 252); 
+   border:1px solid rgb(188, 231, 245);
 }
+
+.author-photo{
+
+    width:50px;
+    background-image:url("assets/manTenant.png");
+    
+}
+

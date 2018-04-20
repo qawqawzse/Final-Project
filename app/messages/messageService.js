@@ -11,7 +11,7 @@ app.factory('messageService', function($http, $q ) {
         this.details=message.details;
         this.priority=message.priority;
         this.comments=message.comments;
-        this.read=false;
+        this.isRead=message.isRead;
 
     }
 
@@ -78,6 +78,8 @@ function newMessage(user, message){
 
     message.createdAt=new Date();
 
+    message.isRead=false;
+
     message.createdBy=user.fname +" "+ user.lname;
 
     var x=new Message(message);
@@ -126,55 +128,7 @@ function newComment(user,index,text){
 }
 
 
-function badgeCounter(){
-    
-    var counter={};
 
-    getData();
-    
-    for (i=0; i<messages.length; i++){
-        
-        if (messages[i].read==false){
-            
-            counter.all++;
-            
-            if(messages[i].priority==="Critical"){
-                
-                counter.critical ++;
-            }
-
-            if(messages[i].priority==="High"){
-                
-                counter.high++;
-            }
-
-            if(messages[i].priority==="Medium"){
-                
-                counter.medium++;
-            }
-
-            if(messages[i].priority==="Low"){
-                
-                counter.low++;
-            }
-
-
-
-
-        }
-
-    }
-console.log(counter)
-    return counter={
-        all:all,
-        critical: critical,
-        high:high,
-        medium:medium,
-        low:low
-    }
-
-    
-}
 
 return {
 
@@ -184,7 +138,6 @@ return {
     deleteMessage: deleteMessage,
     updateMessage: updateMessage,
     newComment: newComment,
-    badgeCounter:badgeCounter
     
 
 };

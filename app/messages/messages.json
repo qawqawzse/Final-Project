@@ -1,13 +1,7 @@
 [
-  
 
-     
   {
-    "createdBy":[{ 
-        "fname": "Dan ",
-        "lname": "Shalom",
-        "id":"1"
-    }],
+    "createdBy":"Dan Shalom",
     "createdAt":"2018-04-06T13:49:28.552Z",
     "title":"Weekly Appointment",
     "details":"All tenants are requested to arrive this time, we'll dicuss the garbage and public storage options",
@@ -28,35 +22,33 @@
     }
   
   
-    ]
+    ],
+
+    "isRead":false
   },
   
 
   {
-    "createdBy":[{ 
-      "fname": "Griphin ",
-      "lname": "Doers",
-      "id":"2"
-  }],
+    "createdBy":"Griphin Doers",
     "createdAt":"2018-04-06T15:35:00.552Z",
     "title":"New regulatory requests from business owners and tenants in high buildings",
     "details":"These changes will effect the building plans and tenants will be asked to pay for new building facilities",
     "priority":"Critical",
-    "comments":["sdfs"]
+    "comments":["sdfs"],
+    "isRead":false
+
   },
   
   
   {
-    "createdBy":[{ 
-      "fname": "Ifat ",
-      "lname": "Zandberg",
-      "id":"3"
-  }],
+    "createdBy":"Ifat Zandberg",
     "createdAt":"2018-04-06T17:25:12.552Z",
     "title":"Tenants Party",
     "details":"The party will take place on Sturday January 3 at the swimming pool deck",
     "priority":"Low",
-    "comments":["sdfs"]
+    "comments":["sdfs"],
+    "isRead":false
+
   }
   
   
