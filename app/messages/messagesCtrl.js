@@ -17,11 +17,8 @@ $scope.authorPhoto;
 
 // unread messages counter 
 
-$scope.counter={
+$scope.counter={};
     
-};
-
-console.log($scope.counter)
 
 
 //demo user function - should be replaced and routed to login when no user is looged !!!
@@ -147,52 +144,53 @@ $scope.isRead=function(message){
 
 $scope.counter=function (){
     
-      
-    
-    $scope.counter.all=$scope.messages.read;
-    $scope.counter.high=2;
-  
-  console.log($scope.counter);
-    return true;
+    $scope.counter.all=0;
+    $scope.counter.critical=0;
+    $scope.counter.high=0;
+    $scope.counter.medium=0;
+    $scope.counter.low=0;
 
-    // for (i=0; i<$scope.messages.length; i++){
+    for (i=0; i<$scope.messages.length; i++){
         
-    //     // if ($scope.messages[i].read==false){
+        if ($scope.messages[i].isRead==false){
             
-    //         $scope.counter.all=$scope.counter.all+1;
+            $scope.counter.all=$scope.counter.all+1;
 
             
-    //         if($scope.messages[i].priority==="Critical"){
+            if($scope.messages[i].priority==="Critical"){
                 
-    //             counter.critical=$scope.counter.critical+1;
-    //         }
+                $scope.counter.critical=$scope.counter.critical+1;
+            }
 
-    //         if(messages[i].priority==="High"){
+            if($scope.messages[i].priority==="High"){
                 
-    //             $scope.counter.high=$scope.counter.high+1;
-    //         }
+                $scope.counter.high=$scope.counter.high+1;
+            }
 
-    //         if(messages[i].priority==="Medium"){
+            if($scope.messages[i].priority==="Medium"){
                 
-    //             $scope.counter.medium=$scope.counter.medium+1;
-    //         }
+                $scope.counter.medium=$scope.counter.medium+1;
+            }
 
-    //         if(messages[i].priority==="Low"){
+            if($scope.messages[i].priority==="Low"){
                 
-    //             $scope.counter.low=$scope.counter.low+1;
-    //         }
+                $scope.counter.low=$scope.counter.low+1;
+            }
 
+            
+        } else{
+            
+            
 
-    //     // }
-
-       
+        }  
     
-
-
+    }
+    
+    return true;
     
 }
 
-
+console.log($scope.counter)
 
    
 });
