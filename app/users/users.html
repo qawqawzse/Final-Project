@@ -1,77 +1,177 @@
 
 
 
-<!-- users display area  -->
 
-<main class="container mt-3">
+<main class="container bg-light mt-5 p-4">
 
-    <div class="container border mt-3 ">
-        <div class="row" >    
-          <!-- new tenant button -->
-          <button type="button" class="btn btn-primary col-sm-2 " data-toggle="modal" data-target="#newTenant">
-              New Tenant
-          </button>
-      
-          <!-- search bar  -->
-          <div class=" col-sm-10 p-1">
-              <input class="col-12 " type="text" placeholder="Search.." id="search" ng-model="searchStr">              
-          </div>
-      
-        </div>  
-      </div>
-
-<div id="accordion">
-    
-          <div class="card" ng-repeat="user in users | filter: searchStr">
-            <div class="card-header" id="headingOne">
-              
-                <!-- accordion title -->
-              <h5 class="mb-0">
-    
-                <button class="btn btn-link" data-toggle="collapse" data-target="#{{$index}}" aria-expanded="true" aria-controls="collapseOne">
-                  {{user.fname}} {{user.lname}}
-                </button>
-                <h6 class="float-right"> ID: {{user.id}} Role: {{user.role}}</h6>
-                
-
-              </h5>
-              
-              <!--accordion body-->
-              
-            </div>
         
-            <div id="{{$index}}" class="collapse  " aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body row">
-                <!-- tenant image -->
-                <div class="col-sm-2">
-                  <img class=" img-fluid img-thumbnail float-left " src="{{user.img}}">
-                </div>
-                <div class="col-sm-4">
-                  <h5 class="text-primary">{{user.fname}} {{user.lname}}</h5>
-                  <a href="#">eMail: {{user.email}}</a>
-                  <p>Building: {{user.building}} Appartment: {{user.appartment}}</p>
-                  <p>Appartment: {{user.appartment}}</p>
-                </div>
-                <!-- delete and update buttons  -->
-                <div class="col-sm-2 float-right">
-                  <button type="btn" class="btn btn-primary" ng-click="delete(user)">Delete</button>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="update(user)">Update</button>
-                </div>
-
-
-              </div>
+        <!--Top messages bar- search, filters, and new message button  -->
+      
+        <div class="container">
+      
+          <!-- new message button -->
+          <div class="row ">
+      
+            <div class="col-sm-2  my-auto  ">
+              <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#newTenant">
+                <i class="fas fa-plus "></i>
+                <span class="m-auto p-auto">Add Tenant</span>
+              </button>
             </div>
-            
-            
+
+            <p class="mr-3 my-auto ">{{users.length}} Tenants</p>
+
+
+            <!-- search bar  -->
+            <div class="col-sm-6 my-auto ml-auto ">
+              <input class=" col-12" type="text" placeholder="Search.." id="search" ng-model="searchStr">
+            </div>
+      
+          </div>
+        </div>
+      
+        <hr>
+      
+      
+      
+      
+      
+        <!-- All and Critical button navigators  -->
+      
+        <!-- Nav tabs -->
+        <div class="container row ">
+          <div class="col-sm-8">
+            <ul class="nav nav-tabs">
+              
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#!/users" ng-click="priorityFilter='' ">
+                  All </a> 
+      
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#!/users" ng-click="alphabetFilter='A' ">
+                  A </a> 
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#!/users" ng-click="alphabetFilter='B' ">
+                  B</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#!/users" ng-click="alphabetFilter='C' ">
+                 C </a> 
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#!/users" ng-click="alphabetFilter='D' ">
+                  D </a>
+              </li>
+
+            </ul>
           </div>
           
+      
         </div>
-    
-    
-      </div>
-    
-</main>
+      
+      
+      
+      
+      
+      
+
   
+
+
+
+<!-- USERS DISPLAY AREA -->
+
+
+<div id="accordion ">
+    
+    <div class="card " ng-repeat="user in users | filter: searchStr " data-toggle="collapse" data-target="#{{$index}}" aria-expanded="true" aria-controls="collapseOne">
+      <div class="card-header row" id="headingOne">
+        <!-- user photo -->
+        <div class="col-sm-1">
+          <img class="img-fluid" style="height:50px" src="{{user.img}}">
+        </div>
+
+
+        <!-- user name -->
+        <div class="col-sm-4">
+            <div>
+              <h6 class="mb-0 "> {{user.fname}} {{user.lname}}</h6>
+            </div>
+            
+            <div>
+                <p> Role: {{user.role}}</p>  
+            </div>
+            
+        </div>    
+
+        <!-- appartment and building -->
+          <div class="col-sm-4 ml-auto ">
+            <div class="row ml-auto">   
+
+              <p class="m-3">Appatment</p>
+              <h1 >{{user.appartment}}</h1>
+            
+              <p class="m-3">Building </p>
+              <h1>{{user.building}}</h1>
+            </div>
+          </div>
+
+          <!-- tenant id  -->
+
+          <div class="col-sm-3">
+            <div class="row">
+              <p class="m-3"> ID </p>
+              <h1 class="text-primary"> {{user.id}} </h1>
+            </div>  
+          </div>
+
+      </div>
+
+      
+
+
+
+
+
+<!--accordion body-->
+        
+      
+     
+  
+      <div id="{{$index}}" class="collapse "  aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body row " >
+          <!-- tenant image -->
+          <div class="col-sm-2">
+            <img class=" img-fluid img-thumbnail float-left " src="{{user.img}}">
+          </div>
+          <div class="col-sm-4">
+            <h5 class="text-primary">{{user.fname}} {{user.lname}}</h5>
+            <a href="#">eMail: {{user.email}}</a>
+            <p>Building: {{user.building}} Appartment: {{user.appartment}}</p>
+            <p>Appartment: {{user.appartment}}</p>
+          </div>
+          <!-- delete and update buttons  -->
+          <div class="col-sm-2 float-right">
+            <button type="btn" class="btn btn-primary" ng-click="delete(user)">Delete</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="update(user)">Update</button>
+          </div>
+
+
+        </div>
+      </div>
+      
+      
+    </div>
+    
+  </div>
+
+
+</div>
+
+</main>
+
 
 
 
