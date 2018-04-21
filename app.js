@@ -3,7 +3,7 @@ var app=angular.module("myApp",["ngRoute"]);
 
 app.config(function($routeProvider) {
     $routeProvider
-    .when("/", {
+    .when("/home", {
         templateUrl : "app/home/home.html",
         controller : "homeCtrl"
     
