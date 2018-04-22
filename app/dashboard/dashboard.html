@@ -1,14 +1,72 @@
 
 
 <main class="container" >
-    <div class="row bg-light" style="height:450px">
-        <div class="col-sm-6"></div>
-        <div class="col-sm-6"></div>
+    
+    <!-- community and user bar -->
+    <div class="row bg-secondary border" style="height:75px">
+        homeowner's photo and community name 
+    </div>
+    <!-- upper container -->
+    <div class="row bg-light border" style="height:400px">
+        <!-- messages area -->
+        <div class="col-sm-6 border">
+            <h4>Recent Messages</h4>
+            <div class="messages area ">
+                    <div class="bg-light mt-3">
+                            
+                            
+                                <div style="max-height:300px; overflow:auto; ">
+                            
+                                  <div  ng-click="isRead(message)" ng-class="{unread: message.isRead==false}"  ng-repeat="message in messages | filter: message.priority |orderBy: message.createdAt ">
+                                    <div class="card-header" style="height:70px;"  id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
+                            
+                                      <div class="row " >
+                            
+                                        <!-- Author name -->
+                                        <div class="my-auto col-sm-3 ">
+                                          <p><small>{{message.createdBy}} </small></p>
+                                        </div>
+                            
+                                        <!-- messages title -->
+                                        <div class=" my-auto col-sm-6 ">
+                                          <h6 class=""> <small>{{message.title}} </small></h6>
+                                        </div>
+                            
+                            
+                            
+                                        <!-- creation date and time -->
+                                        <div class="my-auto col-sm-2 ">
+                                          <!-- Creation Date -->
+                                          <div>
+                                            <p class="m-0 p-0"><small>{{message.createdAt|date:'dd/MM/yyyy'}}</small></p>
+                                          </div>
+                                          <!-- creation hour -->
+                                          <div>
+                                            <p class="m-0 p-0"><small>{{message.createdAt|date:'HH:mm:ss'}}</small></p>
+                                          </div>
+                                        </div>
+                                                      
+                                      </div>
+                            
+                                    </div>
+                            
+            </div>
+        </div>
+
+        <!-- overdue messages -->
+        <div class="col-sm-6 border">
+            <h4>Unread Issues</h4>
+                
+        </div>
 
     </div>
 
-    <div class="row bg-light">
-
-
+    <!-- charts continer -->
+    <div class="row bg-light border" style="height:400px;">
+        <h4>Charts</h4>
+        <div class="chart1">
+            <div google-chart chart="myChartObject" style="max-height:400px; width:100%;"></div>
+        </div>
+        
     </div>
 </main>

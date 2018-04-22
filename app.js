@@ -1,4 +1,5 @@
-var app=angular.module("myApp",["ngRoute"]);
+
+var app=angular.module("myApp",['ngRoute', 'googlechart']);
 
 
 app.config(function($routeProvider) {
