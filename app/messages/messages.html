@@ -102,19 +102,19 @@
               </div>
             </div>
             <!-- Author name -->
-            <div class="my-auto col-sm-2">
+            <div class="my-auto col-sm-2 ">
               <div >{{message.createdBy}} </div>
             </div>
 
             <!-- messages title -->
             <div class="my-auto col-sm-5 ">
-              <h6 class="text-secondary"> {{message.title}} </h6>
+              <h6 class=""> {{message.title}} </h6>
             </div>
 
 
 
             <!-- creation date and time -->
-            <div class="col-sm-2 ml-auto">
+            <div class="col-sm-2 ml-auto ">
               <!-- Creation Date -->
               <div>
                 <p>{{message.createdAt|date:'dd/MM/yyyy'}}</p>
@@ -126,14 +126,14 @@
             </div>
 
             <!-- message comments number and icon -->
-            <div class="col-sm-1 my-auto">
+            <div class="col-sm-1 my-auto ">
 
               <p class="badge ">{{message.comments.length}}</p>
               <i class="fas fa-comments fa-2x"></i>
 
             </div>
             <!-- priority icon -->
-            <div class=" col-sm-1 p-auto m-auto">
+            <div class=" col-sm-1 p-auto m-auto ">
               <i ng-show="message.priority=='High' || message.priority=='Medium' || message.priority=='Low' " class="text-primary fas fa-info fa-2x"></i>
               <i ng-show="message.priority=='Critical' " class="text-danger fas fa-exclamation fa-2x"></i>
             </div>
