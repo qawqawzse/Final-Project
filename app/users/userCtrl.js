@@ -11,7 +11,9 @@ app.controller("userCtrl", function($scope, userService, $http, $location ) {
     $scope.user={};
     $scope.user.img="assets/manOwner.png";
 
-
+//active user innitialization 
+$scope.activeUser={};
+$scope.activeUser=userService.loggedIn();
 
 //creating new tenant
 
