@@ -116,8 +116,18 @@ app.factory("userService", function ($http, $log, $q) {
                     if (response.data[i].email === email && response.data[i].password === pwd) {
                         activeUser = response.data[i];
                         async.resolve(true);
-                    }                
+                    }  
+                              
                 }
+
+                for (var i = 0; i < users.length; i++) {
+                    if (users[i].email === email && users[i].password === pwd) {
+                        activeUser = users[i];
+                        async.resolve(true);
+                    }  
+                              
+                }
+
                 async.resolve(false);
             }, function (response) {
                 $log.error("error in getting user json: " + JSON.stringify(response));
