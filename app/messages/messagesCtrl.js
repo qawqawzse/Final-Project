@@ -24,29 +24,28 @@ $scope.counter={};
 
 //demo user function - should be replaced and routed to login when no user is looged !!!
 
-if ($scope.activeUser===null){
+// if ($scope.activeUser===null){
 
     
-    location.path="/";
     
-    // demo user 
+//     // demo user 
     
-    // $scope.activeUser= {
+//     // $scope.activeUser= {
         
-    //     id: "0",
-    //     role: "tenant",
-    //     email: "demo@gmail.com",
-    //     password: "dan123",
-    //     fname: "Demo-user",
-    //     lname: "Demofamily",
-    //     building: "1",
-    //     appartment: "13",
-    //     img:"assets/manTenant.png",
-    //     data: ""
+//     //     id: "0",
+//     //     role: "tenant",
+//     //     email: "demo@gmail.com",
+//     //     password: "dan123",
+//     //     fname: "Demo-user",
+//     //     lname: "Demofamily",
+//     //     building: "1",
+//     //     appartment: "13",
+//     //     img:"assets/manTenant.png",
+//     //     data: ""
 
-    // }
+//     // }
    
-}
+// }
 
 console.log($scope.activeUser);
 
@@ -230,6 +229,8 @@ $scope.counter=function (){
 }
 
 console.log($scope.counter)
+
+
 
    
 });

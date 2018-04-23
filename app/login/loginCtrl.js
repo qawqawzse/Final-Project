@@ -9,7 +9,13 @@ $scope.checkUser= function(email,pwd) {
     
     userService.loginCheck(email,pwd).then(function(successLogin) {
         if (successLogin) {
-            $location.path("/messages");
+            var activeUser=userService.loggedIn()
+            if (activeUser.role=="tenant"){
+                $location.path("/messages");
+            }else{
+                $location.path("/users");
+            }
+            
             console.log(successLogin)
         } else {
             

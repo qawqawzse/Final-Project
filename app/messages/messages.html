@@ -9,10 +9,10 @@
     <!-- new message button -->
     <div class="row ">
 
-      <div class="col-sm-2  my-auto  ">
+      <div class="col-sm-2  my-auto"  ng-if="activeUser.role=='owner'">
         <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#NewMessageModal">
           <i class="fas fa-plus "></i>
-          <span class="m-auto p-auto">New Message</span>
+          <span class="m-auto p-auto" >New Message</span>
         </button>
       </div>
       <!-- search bar  -->
@@ -158,23 +158,23 @@
                 <hr>
 
                 <p>{{message.details}}</p>
-                <p>Priority:{{message.priority}}</p>
+                <p><small>Priority:{{message.priority}}</small></p>
               </div>
 
               <div>
                 <!-- Creation Date -->
                 <div>
-                  <p>Created At: {{message.createdAt|date:'dd/MM/yyyy'}}</p>
+                  <p><small>Created At: {{message.createdAt|date:'dd/MM/yyyy'}}</small></p>
                 </div>
                 <!-- creation hour -->
                 <div>
-                  <p>Time: {{message.createdAt|date:'HH:mm:ss'}}</p>
+                  <p><small>Time: {{message.createdAt|date:'HH:mm:ss'}}</small></p>
                 </div>
               </div>
 
             
             <!-- delete and update buttons  -->
-            <div class="mt-auto">
+            <div class="mt-auto" ng-if="activeUser.role=='owner'">
                 <button type="btn" class="btn btn-primary" ng-click="delete(message)">
                     <i class="far fa-trash-alt"></i></button>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="">

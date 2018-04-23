@@ -1,6 +1,7 @@
-app.controller("ctrl", function($scope, $location) {
+app.controller("ctrl", function($scope, userService, $location) {
 
- $scope.isHomeScreen= function() {
+
+$scope.isHomeScreen= function() {
 
     if ($location.path("/")){
         
