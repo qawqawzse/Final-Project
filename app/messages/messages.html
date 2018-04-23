@@ -108,7 +108,7 @@
 
             <!-- messages title -->
             <div class="my-auto col-sm-5 ">
-              <h6 class="text-secondary"> {{message.title}} </h6>
+              <h6 class=""> {{message.title}} </h6>
             </div>
 
 
@@ -223,12 +223,12 @@
                 </div>
               </div>
               <!-- comments input -->
-              <div class="container mt-auto">
-                <div class="row">
-                  <input class="col-8" type="text" ng-model="text" placeholder="Write a comment..">
-                  <button type="btn" class="btn btn-primary" ng-click="comment($index,text)">Comment</button>
+              <form ng-submit="comment($index,text)" class="container mt-auto">
+                <div class="form-group row">
+                  <input class="col-8" type="text" ng-model="text" id="t1" placeholder="Write a comment..">
+                  <button type="button" class="btn btn-primary" ng-click="comment($index,text)">Comment</button>
                 </div>
-              </div>  
+              </form>  
             </div>
 
             
@@ -271,7 +271,7 @@
       <!-- Modal body -->
       <div class="modal-body">
 
-        <form class="message container bg-light">
+        <form ng-click="msgSubmit(message)" class="message container bg-light">
 
           <div class="form-group">
             <label for="messageTitle">Message Title</label>
@@ -293,17 +293,7 @@
             </select>
           </div>
 
-          <div>
-            <time>Created At: X</time>
-          </div>
-
-          <div>
-            <time>Created By: Current user(x)</time>
-          </div>
-
-
-
-
+          
         </form>
 
 
@@ -335,7 +325,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Update Message (should be fixed)</h4>
+        <h4 class="modal-title">Update Message </h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -364,17 +354,7 @@
             </select>
           </div>
 
-          <div>
-            <time>Created At: X</time>
-          </div>
-
-          <div>
-            <time>Created By: Current user(x)</time>
-          </div>
-
-
-
-
+          
         </form>
 
 
