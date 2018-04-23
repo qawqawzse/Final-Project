@@ -146,16 +146,21 @@
           <div class="col-sm-2">
             <img class=" img-fluid img-thumbnail float-left " src="{{user.img}}">
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-2 border">
             <h5 class="text-primary">{{user.fname}} {{user.lname}}</h5>
-            <a href="#">eMail: {{user.email}}</a>
-            <p>Building: {{user.building}} Appartment: {{user.appartment}}</p>
-            <p>Appartment: {{user.appartment}}</p>
+            <p class="m-0 mt-2">Role:{{user.role}}</p>
+            <p class="m-0">ID: {{user.id}}</p>
+          </div>
+          <div class="col-sm-4 border ml-3">
+            <h5>Tenant Details</h5>
+            <a class="m-0 mt-2" href="#">eMail: {{user.email}}</a>
+            <p class="m-0">Building: {{user.building}} </p>
+            <p class="m-0">Appartment: {{user.appartment}}</p>
           </div>
           <!-- delete and update buttons  -->
-          <div class="col-sm-2 float-right">
-            <button type="btn" class="btn btn-primary" ng-click="delete(user)">Delete</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="update(user)">Update</button>
+          <div class="col-sm-2 my-auto">
+            <button type="btn" class="btn btn-primary" ng-click="delete(user)"><i class="far fa-trash-alt"></i> Delete Tenant</button>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal" ng-click="update(user)">Update</button> -->
           </div>
 
 
