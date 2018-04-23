@@ -9,22 +9,22 @@
             <div class="mt-3 text-center"><h4>Sign In</h4></div>
 
             <!-- login form -->
-            <form class="container mt-4">
+            <form ng-submit="checkUser(email,pwd)" class="container mt-4">
     
-                <div class="alert alert-danger" ng-show="invalidCredentails">
+                <div class="alert alert-danger "  ng-show="invalidCredentails">
                   <strong>Try Again</strong> The eMail and Password you entered are incorrect. 
                 </div>
               
                 <div class="form-group">
                     <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="email" ng-model="email">
+                    <input type="email" class="form-control" id="email" ng-focus="invalidCredentails=false" ng-model="email">
                   </div>
                   <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" ng-model="pwd" >
+                    <input type="password" class="form-control" id="pwd" ng-focus="invalidCredentails=false" ng-model="pwd" >
                   </div>
                    
-                  <button type="button" class="btn btn-primary" ng-click="checkUser(email,pwd)">Login</button>
+                  <button type="submit" class="btn btn-primary" ng-click="checkUser(email,pwd)" >Login</button>
               
               </form> 
               
@@ -32,7 +32,7 @@
 
         <div class="col-sm-7 bg-white ml-5">
             <h2 class="m-3">Everything you need for Community Management</h2> 
-            <h5 class="m-5">It doesn’t matter if you manage one or multiple Communities, B-Com Property Manager has you covered.</h5>
+            <h5 class="m-5">It doesn’t matter if you manage one or multiple Communities, Building-Link Building Community Manager has you covered.</h5>
             
             <!-- signup button for homeowners  -->
               <button type="button" class="mb-5 mr-5 float-right btn btn-success" data-toggle="modal" data-target="#signUp">
@@ -104,7 +104,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Home Owner SignUp</h4>
+        <h4 class="modal-title text-primary"><i class="fas fa-sign-in-alt"></i> Home Owner SignUp</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -117,7 +117,7 @@
           <div class="photoUpload container ">
             <div class="px-auto">
               <div class="">
-                <img  ng-src="{{user.img}}"  style="max-width:250px;" >
+                <img  ng-src="{{user.img}}"  style="max-width:150px;" >
               </div>
                                         
               <!-- Upload Photo: <input type="file" name="img class="fas fa-camera"><input type="submit"> -->
@@ -132,8 +132,29 @@
       
           <!-- form inputs -->
           <div class="inputs mt-3">
-            <form>    
-
+            <form ng-submit="newOwner(user)">    
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                            <label for="fname">Owner First name</label>
+                            <input type="text" class="form-control" id="fname" ng-model="user.fname">
+                    </div>
+                    
+                    <div class="form-group col-sm-6">
+                        <label for="lname">Owner Last name</label>
+                        <input type="text" class="form-control" id="lname" ng-model="user.lname">
+                    </div>             
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6"> 
+                        <label for="email2">eMail</label>
+                        <input type="email" class="form-control" id="email2" ng-model="user.email">
+                    </div> 
+                    
+                    <div class="form-group col-sm-6">
+                        <label for="pwd2">Password:</label>
+                        <input type="password" class="form-control" id="pwd2" ng-model="user.password">
+                    </div>
+                </div>    
                 <div class="row"> 
                   <div class="col-sm-6 form-group">
                       <label for="building">Building</label>
@@ -151,24 +172,10 @@
                   <div class="col-sm-6 form-group">
                       <label for="address">Community Address</label>
                       <textarea class="form-control" rows="5" id="address" ng-model="user.address"></textarea>
-                  </div> 
-
-              
-                <div class="form-group col-sm-6">
-                        <label for="fname">Owner First name</label>
-                        <input type="text" class="form-control" id="fname" ng-model="user.fname">
-                </div>
-                
-                <div class="form-group col-sm-6">
-                    <label for="lname">Owner Last name</label>
-                    <input type="text" class="form-control" id="lname" ng-model="user.lname">
-                </div>             
-                
-                <div class="form-group col-sm-6"> 
-                    <label for="email">eMail</label>
-                    <input type="email" class="form-control" id="email" ng-model="user.email">
                 </div> 
 
+              
+                
 
             </form>
           </div>
@@ -186,7 +193,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="newOwner(user)">Create</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="newOwner(user)" >Create</button>
       </div>
 
     </div>
