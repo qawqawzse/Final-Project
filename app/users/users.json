@@ -23,7 +23,6 @@
         "img" : "assets/womanTenant.png ",
         "data": ""
     },
-
     {
         "id" : "3",
         "role": "owner",
@@ -36,17 +35,28 @@
         "img" : "assets/womanOwner.png ",
         "data": ""
     },
-
     {
         "id" : "4",
         "role": "owner",
-        "email": "yoni@gmail.com",
-        "password": "yoni123",
-        "fname": "yoni",
-        "lname": "Aharonovich",
+        "email": "owner@gmail.com",
+        "password": "owner123",
+        "fname": "Owner",
+        "lname": "A",
         "building": "1",
         "appartment": "13",
         "img" : "assets/manOwner.png ",
+        "data": ""
+    },
+    {
+        "id" : "5",
+        "role": "tenant",
+        "email": "tenant@gmail.com",
+        "password":"tenant123",
+        "fname": "Tenant",
+        "lname": "B",
+        "building": "1",
+        "appartment": "13",
+        "img" : "assets/manTenant.png ",
         "data": ""
     }
 ]

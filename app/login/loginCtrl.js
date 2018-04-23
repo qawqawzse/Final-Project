@@ -10,6 +10,7 @@ $scope.checkUser= function(email,pwd) {
     userService.loginCheck(email,pwd).then(function(successLogin) {
         if (successLogin) {
             $location.path("/messages");
+            console.log(successLogin)
         } else {
             
             $scope.invalidCredentails = true;
@@ -28,6 +29,8 @@ $scope.user.img="assets/manOwner.png"
 $scope.newOwner=function(user){
 
     userService.newOwner(user);
+
+    console.log(user)
 
 }
   
