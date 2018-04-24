@@ -98,15 +98,20 @@
 
       </ul>
 
+      <!-- login animation -->
+        <div class="ml-auto row" ng-hide="activeUserShow()">
+          <h6 class="text-white my-auto">Log-in or Sign-up</h6>
+          <img style="max-height:30px; width:150px;" class="ml-3 mr-5" src="assets/animation.gif">
+        </div>
 
       <!-- active user navbar widget -->
-        <div class="ml-auto" ng-show="activeUserShow()">
+        <div class="ml-auto my-auto " ng-show="activeUserShow()">
       <!-- <div ng-show="activeUserShow()"> -->
-        <div class="row ml-2">
-          <img  src="{{getActiveUserImage()}}" style="height:40px;">
-          <h6 class="ml-2 my-auto text-white"> {{getActiveUserName()}}</h6>
-          <p> class="text-white">{{activeUser.role}}</p>
-       </div>
+          <div class="row ml-auto my-auto">
+            <img  class="my-auto" src="{{getActiveUserImage()}}" style="height:40px;">
+            <h6 class="ml-2 my-auto text-white"> {{getActiveUserName()}}</h6>
+            <p> class="text-white">{{activeUser.role}}</p>
+        </div>
       </div>
     
       <!--comunity name and logo navbar widget  -->
