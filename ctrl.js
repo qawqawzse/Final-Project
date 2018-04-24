@@ -11,6 +11,11 @@ $scope.isHomeScreenMessages= function() {
     }else{ 
         return true;
     }
+
+
+    if ($scope.activeUser==null){
+        return false
+    }
   
 }
 
@@ -26,6 +31,11 @@ $scope.isHomeScreenTenants=function(){
             return false;
         }
     }   
+
+    if (activeUser==null){
+        return false
+    }
+
 }
 
 
