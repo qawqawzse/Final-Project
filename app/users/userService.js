@@ -173,7 +173,7 @@ app.factory("userService", function ($http, $log, $q) {
 
     function getUserImage (id){
 
-        for (i=0; i<users.lenth; i++){
+        for (i=0; i<users.length; i++){
 
             if (user.id===id){
                 return user.img 

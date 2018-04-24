@@ -4,28 +4,62 @@ app.controller("ctrl", function($scope, userService, $location) {
     $scope.activeUser={};
 
 
-$scope.isHomeScreen= function() {
+$scope.isHomeScreenMessages= function() {
 
     if ($location.path() === "/"){
-        
+        return false;
+    }else{ 
         return true;
     }
- }    
+  
+}
+
+
+$scope.isHomeScreenTenants=function(){
+
+    if ($location.path() === "/"){
+        return false;
+    } else{
+        if($scope.activeUser.role=="owner"){    
+            return true;
+        }else {
+            return false;
+        }
+    }   
+}
+
 
 
  $scope.getActiveUserImage=function(){
 
     $scope.activeUser=userService.loggedIn();
 
-    return $scope.activeUser.img;
+    if($scope.activeUser==null){
+
+        return false
+
+    } else {
+
+        return $scope.activeUser.img;
+    }
+    
+
     
  }
 
  $scope.getActiveUserName=function(){
 
     $scope.activeUser=userService.loggedIn();
+
+        if ($scope.activeUser==null){
+
+            return false;
+        }else{
+
+            return $scope.activeUser.fname +" "+ $scope.activeUser.lname ;
+           
+        }
     
-        return $scope.activeUser.fname +" "+ $scope.activeUser.lname ;
         
 
  }

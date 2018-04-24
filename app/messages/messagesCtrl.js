@@ -109,24 +109,27 @@ $scope.userImg=function(message){
     var userName=message.createdBy;    
     var author="";
 
-    console.log(userName)
+
 
     for(i=0; i<$scope.users.length; i++){
 
         if(userName===$scope.users[i].fname +" "+ $scope.users[i].lname){
             author=$scope.users[i];
+            
         }
 
     }
 
-    $scope.authorPhoto=author.img;
+    message.authorPhoto=author.img;    
+    console.log("userPhoto");
+    console.log($scope.authorPhoto);
+    console.log("user image found")
 
-    
-   
+     
     
     if ($scope.authorPhoto==undefined || $scope.authorPhoto==""){
 
-        $scope.authorPhoto="assets/avatar.jpg";
+        authorPhoto="assets/avatar.jpg";
 
         
     }
@@ -152,7 +155,7 @@ $scope.commentUserImg=function(comment){
 
     }
 
-    $scope.authorPhotoComment=author.img;
+    comment.authorPhotoComment=author.img;
 
     console.log($scope.authorPhotoComment)
     console.log(author.img)
@@ -160,7 +163,7 @@ $scope.commentUserImg=function(comment){
     
     if ($scope.authorPhotoComment==undefined || $scope.authorPhotoComment==""){
 
-        $scope.authorPhotoComment="assets/avatar.jpg";
+        authorPhotoComment="assets/avatar.jpg";
 
         
     }

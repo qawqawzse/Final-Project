@@ -81,10 +81,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
 
-        <li class="nav-item" ng-hide="isHomeScreen()">
+        <li class="nav-item" ng-show="isHomeScreenTenants()">
           <a class="nav-link" href="#!/users">Tenants</a>
         </li>
-        <li class="nav-item" ng-hide="isHomeScreen()">
+        <li class="nav-item" ng-show="isHomeScreenMessages()">
           <a class="nav-link" href="#!/messages">Messages</a>
         </li>
         
@@ -100,11 +100,11 @@
 
 
       <!-- active user navbar widget -->
-        <div class="border ml-auto" ng-show="activeUserShow()">
+        <div class="ml-auto" ng-show="activeUserShow()">
       <!-- <div ng-show="activeUserShow()"> -->
         <div class="row ml-2">
           <img  src="{{getActiveUserImage()}}" style="height:40px;">
-          <h5 class="my-auto text-white"> {{getActiveUserName()}}</h5>
+          <h6 class="ml-2 my-auto text-white"> {{getActiveUserName()}}</h6>
           <p> class="text-white">{{activeUser.role}}</p>
        </div>
       </div>
