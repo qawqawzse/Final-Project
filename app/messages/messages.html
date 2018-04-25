@@ -223,7 +223,7 @@
                 </div>
               </div>
               <!-- comments input -->
-              <form  ng-submit="newComment(message,text)" class="container mt-auto">
+              <form  ng-submit="newComment(message,text); text=''" class="container mt-auto">
                 <div class="row">
                   <input class="col-8" type="text" ng-model="text" id="t1" placeholder="Write a comment..">
                   <button type="button" class="btn btn-primary" ng-click="newComment(message,text); text=''">Comment</button>
