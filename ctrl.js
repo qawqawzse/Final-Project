@@ -1,4 +1,4 @@
-app.controller("ctrl", function($scope, userService, $location) {
+app.controller("ctrl", function($scope, $route, userService, $location) {
 
 
     $scope.activeUser={};
@@ -86,5 +86,14 @@ $scope.isHomeScreenTenants=function(){
         return false;
     }
  }
+
+
+$scope.logOut=function(){
+
+    userService.logOut();
+    $route.reload();
+   
+}
+
    
 });

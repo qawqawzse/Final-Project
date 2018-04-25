@@ -185,6 +185,14 @@ app.factory("userService", function ($http, $log, $q) {
         }
         
     }
+
+    function logOut(){
+        activeUser=null;
+        return activeUser;
+    }
+
+
+
 return{
 
     users: users,
@@ -195,7 +203,8 @@ return{
     loggedIn:loggedIn,
     deleteUser:deleteUser,
     userUpdate:userUpdate,
-    getUserImage:getUserImage
+    getUserImage:getUserImage,
+    logOut:logOut
 
 }
 

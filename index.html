@@ -106,12 +106,12 @@
         </div>
 
       <!-- active user navbar widget -->
-        <div class="ml-auto my-auto " ng-show="activeUserShow()">
+        <div class="userWidget ml-auto my-auto " ng-show="activeUserShow()">
       <!-- <div ng-show="activeUserShow()"> -->
-          <div class="row ml-auto my-auto">
+          <div class="row ml-3 my-auto " >
+            <a href="#" ng-click="logOut()" class="logout ml-2 my-3 text-secondary mr-4">Log-out</a>
             <img  class="my-auto" src="{{getActiveUserImage()}}" style="height:40px;">
-            <h6 class="ml-2 my-auto text-white mr-4"> {{getActiveUserName()}}</h6>
-            
+            <h6 class="ml-2 my-3 text-white mr-4"> {{getActiveUserName()}}</h6>        
         </div>
       </div>
     
