@@ -9,6 +9,7 @@ app.controller("userCtrl", function($scope, userService, $http, $location ) {
 
     
     $scope.user={};
+    $scope.user.role="tenant"   
     $scope.user.img="assets/manOwner.png";
 
 //active user innitialization 

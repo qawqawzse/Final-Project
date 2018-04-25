@@ -91,7 +91,6 @@ $scope.isHomeScreenTenants=function(){
 $scope.logOut=function(){
 
     userService.logOut();
-    $route.reload();
    
 }
 
