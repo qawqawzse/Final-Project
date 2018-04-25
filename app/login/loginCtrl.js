@@ -2,6 +2,11 @@ app.controller("loginCtrl", function($scope,userService, $http, $location ) {
 
 var invalidCredentails=false;
 
+$scope.users=[];
+    
+    userService.getUsers().then(function() {
+    $scope.users = userService.users;
+});
 
 $scope.newOwner=function(user){
 

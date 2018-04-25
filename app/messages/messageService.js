@@ -80,6 +80,8 @@ function newMessage(user, message){
 
     message.isRead=false;
 
+    message.comments=[];
+
     message.createdBy=user.fname +" "+ user.lname;
 
     var x=new Message(message);

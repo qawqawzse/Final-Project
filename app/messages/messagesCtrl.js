@@ -12,6 +12,7 @@ $scope.users=[];
 //active user innitialization 
 $scope.activeUser={};
 $scope.selectedMessage = {};
+$scope.selectedComment={};
 $scope.activeUser=userService.loggedIn();
 $scope.authorPhoto; 
 $scope.authorPhotoComment;
@@ -90,11 +91,23 @@ $scope.update=function(message){
 
 //saving comment input into the message object
 
-$scope.comment=function(index, text){
-
-    messageService.newComment($scope.activeUser.fname+" "+$scope.activeUser.lname , index, text);
+// $scope.comment=function(index, text){
+//     console.log( index, text)
+//     messageService.newComment($scope.activeUser.fname+" "+$scope.activeUser.lname , index, text);
 
     
+// }
+
+$scope.newComment=function(message, text){
+        comment={};
+        console.log( message,text)
+        comment.text=text;
+        comment.createdBy=$scope.activeUser.fname + " " + $scope.activeUser.lname;
+        comment.createdAt=new Date();
+        message.comments.push(comment);
+        $scope.text="";
+        console.log(comment);
+       
 }
 
 $scope.updateMsg = function (message) {

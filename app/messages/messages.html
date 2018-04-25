@@ -47,15 +47,15 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='High' ">
-            High <span ng-show="counter()" ng-hide="counter.high==0" class="badge badge-light">{{counter.high}}</span></a>
+            High <span ng-show="counter()" ng-hide="counter.high==0" class="badge badge-light">({{counter.high}})</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Medium' ">
-           Medium <span ng-show="counter()" ng-hide="counter.medium==0" class="badge badge-light">{{counter.medium}}</span></a> 
+           Medium <span ng-show="counter()" ng-hide="counter.medium==0" class="badge badge-light">({{counter.medium}})</span></a> 
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#!/messages" ng-click="priorityFilter='Low' ">
-            Low <span ng-show="counter()" ng-hide="counter.low==0" class="badge badge-light">{{counter.low}}</span></a>
+            Low <span ng-show="counter()" ng-hide="counter.low==0" class="badge badge-light">({{counter.low}})</span></a>
         </li>
       </ul>
     </div>
@@ -223,10 +223,10 @@
                 </div>
               </div>
               <!-- comments input -->
-              <form ng-submit="comment($index,text)" class="container mt-auto">
+              <form ng-submit="comment(message,text)" class="container mt-auto">
                 <div class="row">
-                  <input class="col-8" type="text" ng-model="text" id="t1" placeholder="Write a comment..">
-                  <button type="button" class="btn btn-primary" ng-click="comment($index,text)">Comment</button>
+                  <input class="col-8" type="text" ng-model="text" id="t  1" placeholder="Write a comment..">
+                  <button type="button" class="btn btn-primary" ng-click="newComment(message,text)">Comment</button>
                 </div>
               </form>  
             </div>

@@ -6,6 +6,10 @@ app.controller("ctrl", function($scope, userService, $location) {
 
 $scope.isHomeScreenMessages= function() {
 
+    if ($scope.activeUser==null || $scope.activeUser==undefined){
+        return false
+    }
+  
     if ($location.path() === "/"){
         return false;
     }else{ 
@@ -13,15 +17,16 @@ $scope.isHomeScreenMessages= function() {
     }
 
 
-    if ($scope.activeUser==null){
-        return false
-    }
-  
+    
 }
 
 
 $scope.isHomeScreenTenants=function(){
 
+    if ($scope.activeUser==null || $scope.activeUser==undefined){
+        return false
+    }
+    
     if ($location.path() === "/"){
         return false;
     } else{
@@ -32,9 +37,7 @@ $scope.isHomeScreenTenants=function(){
         }
     }   
 
-    if (activeUser==null){
-        return false
-    }
+    
 
 }
 
