@@ -196,7 +196,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="newOwner(user)" >Create</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="newOwner(user); successAlert=true" >Create</button>
       </div>
 
     </div>
@@ -206,7 +206,25 @@
 
 
 
+<!-- success login dialog  -->
 
+<div ng-show="successAlert" class=" container alert alert-success alert-dismissible fade show " role="alert">
+    <div class="container row">
+        <div class="col-1 ">
+                <i class="fas fa-thumbs-up fa-5x"></i>
+        </div>
+        <div class="ml-4 col-8 ">
+            <h5><span class="text-primary">{{user.fname}} {{user.lname}}
+                 </span>: You are now the Owner of <span class="text-primary">{{user.communityName}}</span> community
+            </h5>
+            <hr>
+            <p class="mb-0 text-dark">Log-in with your email and password</p>
+        </div>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 
 
 

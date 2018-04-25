@@ -3,10 +3,15 @@ app.controller("loginCtrl", function($scope,userService, $http, $location ) {
 var invalidCredentails=false;
 
 $scope.users=[];
+
+$scope.user = {};
     
     userService.getUsers().then(function() {
     $scope.users = userService.users;
 });
+
+$scope.successAlert=false;
+
 
 $scope.newOwner=function(user){
 
@@ -39,11 +44,13 @@ $scope.checkUser= function(email,pwd) {
 }
 
 // Ghost photo for homeowners in registration form
-$scope.user = {};
+
 
 $scope.user.img="assets/manOwner.png"
 
-// creating new homeowner and community (new user)
+// success alert
+
+
 
 
   
