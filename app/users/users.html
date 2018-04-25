@@ -87,7 +87,7 @@
 <div id="accordion ">
     
     <div class="card " ng-repeat="user in users | filter: searchStr " data-toggle="collapse" data-target="#{{$index}}" aria-expanded="true" aria-controls="collapseOne">
-      <div class="card-header row" id="headingOne">
+      <div class="card-header cursor-hand row" id="headingOne">
         <!-- user photo -->
         <div class="col-sm-1">
           <img class="img-fluid" style="height:50px" src="{{user.img}}">
@@ -226,26 +226,33 @@
             <!-- form inputs -->
             <div class="inputs mt-3">
               <form>
+
+                  <div class="form-group">
+                      <select class="custom-select" ng-model="user.role">
+                          <option value="tenant" selected>Tenant</option>
+                          <option value="owner">Owner</option>
+                      </select>
+                  </div>
                   <div class="form-group">
                     <input type="text" class="form-control" id="fname" ng-model="user.fname" placeholder="First name">
-              </div>
+                  </div>
               
-              <div class="form-group">
-                  <input type="text" class="form-control" id="fname" ng-model="user.lname" placeholder="Last name">
-              </div>             
-              
-              <div class="form-group">
-                  <input type="email" class="form-control" id="email1" ng-model="user.email" placeholder="eMail">
-              </div> 
-              
-              <div class="row"> 
-                <div class="col-sm-6 form-group">
-                    <input type="number" class="form-control" id="building" ng-model="user.building" placeholder="Building No.">
-                </div> 
-                <div class="col-sm-6 form-group">
-                    <input type="number" class="form-control" id="appartment" ng-model="user.appartment" placeholder="Appartment No.">
-                </div>   
-              </div>      
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="fname" ng-model="user.lname" placeholder="Last name">
+                  </div>             
+                  
+                  <div class="form-group">
+                      <input type="email" class="form-control" id="email1" ng-model="user.email" placeholder="eMail">
+                  </div> 
+                  
+                  <div class="row"> 
+                    <div class="col-sm-6 form-group">
+                        <input type="number" class="form-control" id="building" ng-model="user.building" placeholder="Building No.">
+                    </div> 
+                    <div class="col-sm-6 form-group">
+                        <input type="number" class="form-control" id="appartment" ng-model="user.appartment" placeholder="Appartment No.">
+                    </div>   
+                  </div>      
 
               </form>
 

@@ -90,7 +90,7 @@
     <div id="accordion">
 
       <div class="card "  ng-click="isRead(message)" ng-class="{unread: message.isRead==false}"  ng-repeat="message in messages | filter: searchStr |filter: {priority: priorityFilter} | orderBy: sortParam ">
-        <div class="card-header"  id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
+        <div class="card-header cursor-hand"  id="headingOne" data-toggle="collapse" data-target="#{{$index}}">
 
           <div class="row" >
 
