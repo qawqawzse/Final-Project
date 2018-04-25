@@ -8,16 +8,8 @@ $scope.isHomeScreenMessages= function() {
 
     if ($scope.activeUser==null || $scope.activeUser==undefined){
         return false
-    }
-  
-    if ($location.path() === "/"){
-        return false;
-    }else{ 
-        return true;
-    }
-
-
-    
+    }else {return true;}
+      
 }
 
 
@@ -25,10 +17,6 @@ $scope.isHomeScreenTenants=function(){
 
     if ($scope.activeUser==null || $scope.activeUser==undefined){
         return false
-    }
-    
-    if ($location.path() === "/"){
-        return false;
     } else{
         if($scope.activeUser.role=="owner"){    
             return true;
@@ -36,8 +24,6 @@ $scope.isHomeScreenTenants=function(){
             return false;
         }
     }   
-
-    
 
 }
 
